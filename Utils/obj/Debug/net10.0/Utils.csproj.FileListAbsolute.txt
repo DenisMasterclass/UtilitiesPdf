@@ -1,0 +1,12 @@
+D:\PortoBank\dev\Utilities\Utils\bin\Debug\net10.0\Utils.deps.json
+D:\PortoBank\dev\Utilities\Utils\bin\Debug\net10.0\Utils.dll
+D:\PortoBank\dev\Utilities\Utils\bin\Debug\net10.0\Utils.pdb
+D:\PortoBank\dev\Utilities\Utils\obj\Debug\net10.0\Utils.csproj.AssemblyReference.cache
+D:\PortoBank\dev\Utilities\Utils\obj\Debug\net10.0\Utils.GeneratedMSBuildEditorConfig.editorconfig
+D:\PortoBank\dev\Utilities\Utils\obj\Debug\net10.0\Utils.AssemblyInfoInputs.cache
+D:\PortoBank\dev\Utilities\Utils\obj\Debug\net10.0\Utils.AssemblyInfo.cs
+D:\PortoBank\dev\Utilities\Utils\obj\Debug\net10.0\Utils.csproj.CoreCompileInputs.cache
+D:\PortoBank\dev\Utilities\Utils\obj\Debug\net10.0\Utils.dll
+D:\PortoBank\dev\Utilities\Utils\obj\Debug\net10.0\refint\Utils.dll
+D:\PortoBank\dev\Utilities\Utils\obj\Debug\net10.0\Utils.pdb
+D:\PortoBank\dev\Utilities\Utils\obj\Debug\net10.0\ref\Utils.dll
