@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Text.Json;
@@ -57,13 +58,12 @@ namespace Utils.Repositories
         {
             ProjetoEntity projeto = new ProjetoEntity();
             PacoteEntity pacote = new PacoteEntity();
-            TipoProjetoEntity tipoProjeto = new TipoProjetoEntity();
 
             projeto.IdProjeto = Guid.NewGuid();
             projeto.IdDocusign = ExtrairValor(sb.ToString(), "Docusign Envelope ID:", "lado");
             projeto.TipoProposta = ExtrairValor(sb.ToString(), "Identificador", "abaixo");
             projeto.VersaoProposta = ExtrairValor(sb.ToString(), "Vigência Atualização Publicação Versão", "abaixo");
-            projeto.Vigencia = ExtrairValor(sb.ToString(), "Vigência", "abaixo");
+            projeto.Vigencia = ExtrairBloco(sb.ToString(), "Vigência Atualização Publicação Versão", "GESTÃO DE FORNECEDORES DE TI");
             projeto.Fornecedor = ExtrairValor(sb.ToString(), "FORNECEDOR:", "abaixo");
             projeto.Preposto = ExtrairValor(sb.ToString(), "Preposto responsável:", "acima");
             projeto.EmailPreposto = ExtrairValor(sb.ToString(), "E-mail:", "acima");
@@ -71,52 +71,72 @@ namespace Utils.Repositories
             projeto.NumeroPropostaComercial = ExtrairValor(sb.ToString(), "NRO DA PROPOSTA COMERCIAL:", "acima");
             projeto.HorasTotais = decimal.TryParse(ExtrairValor(sb.ToString(), "TOTAL DE HORAS:", "lado"), out decimal horasTotais) ? horasTotais : 0;
             projeto.LocalTrabalho = ExtrairValor(sb.ToString(), "LOCAL DE TRABALHO:", "acima");
-            projeto.Premissas = ExtrairBloco(sb.ToString(), "PREMISSAS E RESTRIÇÕES", "Nome do Arquivo PT - Proposta Técnica - PROJETO Página 2 de 4");
+            projeto.Premissas = ExtrairBloco(sb.ToString(), "RESTRIÇÕES", "Nome");
             projeto.DentroEscopo = ExtrairBloco(sb.ToString(), "DENTRO DO ESCOPO", "FORA DO ESCOPO");
-            projeto.ForaEscopo = ExtrairBloco(sb.ToString(), "FORA DO ESCOPO", "Nome do Arquivo PT - Proposta Técnica - PROJETO Página 3 de 4");
+            projeto.ForaEscopo = ExtrairBloco(sb.ToString(), "FORA DO ESCOPO", "Nome");
+            projeto.DocumentoComplementar = ExtrairValor(sb.ToString(), "x", "acima");
             projeto.DocumentoComplementar = ExtrairValor(sb.ToString(), "Existe documento complementar anexado nesta proposta?", "acima");
+            //pacote
+            string BlocoPacotex = ExtrairBloco(sb.ToString(), "Arquitetura ", "TOTAL DE HORAS:");
+            var linhas = BlocoPacotex.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+            var registros = new List<PacoteEntity>();
+
+            for (int i = 0; i < linhas.Length; i++)
+            {
+                if (linhas[i].StartsWith("PACOTE"))
+                {
+                    // Linha do PACOTE pode ter os valores misturados
+                    string pacoteLine = linhas[i];
+                    string perfilLine = linhas[i + 2]; // pula "*PERFIL" e pega a linha seguinte
+
+                    // Regex para capturar os valores (exemplo simplificado)
+                    var match = Regex.Match(pacoteLine, @"PACOTE\s+(.*?)\s+QTD HORAS\s+(.*?)\s+DT INICIO\s+(.*?)\s+DT FIM\s+(.*)");
+
+                    var registro = new PacoteEntity
+                    {
+                        Pacote = match.Success ? match.Groups[1].Value.Trim() : "",
+                        Horas = match.Success ? match.Groups[2].Value.Trim() : "",
+                        DataIni = match.Success ? match.Groups[3].Value.Trim() : "",
+                        DataFim = match.Success ? match.Groups[4].Value.Trim() : "",
+                        Perfil = perfilLine.Trim()
+                    };
+
+                    registros.Add(registro);
+                }
+            }
+            projeto.Pacotes = registros;
+
+            //tipo projeto
+            string BlocoTipoProjetox = ExtrairBloco(sb.ToString(), "TIPO DE PROJETO:", "PACOTE");
+            StringBuilder TipoProjetox = new(BlocoTipoProjetox.Replace("[", "").Replace("]", "|").Replace(" ", "").Replace("\r\n", "").Replace("\n", "").Replace("|", Environment.NewLine + "|"));
+
+            string[] linhasP = TipoProjetox.ToString().Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
+
+            for (int i = 0; i < linhasP.Length; i++)
+            {
+                if (linhasP[i].Contains("X"))
+                {
+                    // Substitui X pelo número da linha (i+1 porque índice começa em 0)
+                    linhasP[i] = linhasP[i].Replace("X", "X" + (i + 1));
+                }
+            }
+            TipoProjetox.Clear();
+            TipoProjetox.Append(string.Join(Environment.NewLine, linhas));
+
+            if (TipoProjetox.ToString().Contains("X2")) projeto.TipoProjeto.Analise = true;
+            if (TipoProjetox.ToString().Contains("X3")) projeto.TipoProjeto.Requisitos = true;
+            if (TipoProjetox.ToString().Contains("X4")) projeto.TipoProjeto.Testes = true;
+            if (TipoProjetox.ToString().Contains("X5")) projeto.TipoProjeto.Programacao = true;
+            if (TipoProjetox.ToString().Contains("X6")) projeto.TipoProjeto.AnaliseProgramacao = true;
+            if (TipoProjetox.ToString().Contains("X7")) projeto.TipoProjeto.Etl = true;
+            if (TipoProjetox.ToString().Contains("X8")) projeto.TipoProjeto.Arquitetura = true;
+            if (TipoProjetox.ToString().Contains("X9")) projeto.TipoProjeto.EspecificacaoExecucaoTestes = true;
+
             projeto.Aceite = new StringBuilder(ExtrairBloco(sb.ToString(), "Termo de aceite:", "O uso deste modelo para ALOCAÇÃO É PROIBIDO"));
 
-            // Serializa para JSON com indentação
-            string json = JsonSerializer.Serialize(projeto, new JsonSerializerOptions
-            {
-                WriteIndented = true
-            });
-
-            Console.WriteLine(json);
 
             return projeto;
         }
-        public async Task<ProjetoEntity> ReadProject(ProjetoEntity projetoEntity)
-        {
-            var ListTipoProjeto = new List<TipoProjetoEntity>();
-            var ListPacote = new List<PacoteEntity>();
 
-            var ListProjeto = new ProjetoEntity
-            {
-                IdProjeto = projetoEntity.IdProjeto,
-                IdDocusign = projetoEntity.IdDocusign,
-                TipoProposta = projetoEntity.TipoProposta,
-                VersaoProposta = projetoEntity.VersaoProposta,
-                Vigencia = projetoEntity.Vigencia,
-                Fornecedor = projetoEntity.Fornecedor,
-                Preposto = projetoEntity.Preposto,
-                EmailPreposto = projetoEntity.EmailPreposto,
-                NumeroProposta = projetoEntity.NumeroProposta,
-                NumeroPropostaComercial = projetoEntity.NumeroPropostaComercial,
-                TipoProjeto = projetoEntity.TipoProjeto,
-                Pacotes = projetoEntity.Pacotes,
-                HorasTotais = projetoEntity.HorasTotais,
-                LocalTrabalho = projetoEntity.LocalTrabalho,
-                Premissas = projetoEntity.Premissas,
-                DentroEscopo = projetoEntity.DentroEscopo,
-                ForaEscopo = projetoEntity.ForaEscopo,
-                DocumentoComplementar = projetoEntity.DocumentoComplementar,
-                Aceite = projetoEntity.Aceite
-            };
-
-
-            return ListProjeto;
-        }
     }
 }

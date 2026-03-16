@@ -6,9 +6,10 @@
         {
         }
         public Guid Id { get; set; } = Guid.NewGuid();
-        public int? IdPacote { get; set; } = default;
-        public decimal Horas { get; set; } = default;
-        public DateOnly DataIni { get; set; } = default;
-        public DateOnly DataFim { get; set; } = default;
+        public string Pacote { get; set; } = default;
+        public string Horas { get; set; } = default;
+        public string DataIni { get; set; } = default;
+        public string DataFim { get; set; } = default;
+        public string Perfil { get; set; }
     }
 }

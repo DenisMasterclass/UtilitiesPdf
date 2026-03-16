@@ -6,7 +6,6 @@ namespace Utils.Repositories
     public interface IRepository
     {
         Task<ProjetoEntity> CamposProjetos(StringBuilder sb);
-        Task<ProjetoEntity> ReadProject(ProjetoEntity projetoEntity);
 
     }
 }

@@ -17,13 +17,13 @@ namespace Utils.Repositories.Entities
         public string EmailPreposto { get; set; } = string.Empty;
         public string NumeroProposta { get; set; } = string.Empty;
         public string NumeroPropostaComercial { get; set; } = string.Empty;
-        public List<TipoProjetoEntity> TipoProjeto { get; set; } = new List<TipoProjetoEntity>();
-        public List<PacoteEntity> Pacotes { get; set; } = new List<PacoteEntity>();
+        public TipoProjetoEntity TipoProjeto { get; set; } = new();
+        public List<PacoteEntity> Pacotes { get; set; } = new();
         public decimal HorasTotais { get; set; } = default;
         public string LocalTrabalho { get; set; } = string.Empty;
         public string Premissas { get; set; } = string.Empty;
         public string DentroEscopo { get; set; } = string.Empty;
-        public string ForaEscopo { get; set;} = string.Empty;
+        public string ForaEscopo { get; set; } = string.Empty;
         public string DocumentoComplementar { get; set; } = string.Empty;
         public StringBuilder Aceite { get; set; } = new StringBuilder();
 
