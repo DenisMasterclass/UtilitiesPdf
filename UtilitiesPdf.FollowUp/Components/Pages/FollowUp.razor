@@ -1,0 +1,269 @@
+@page "/follow-up"
+@rendermode InteractiveServer
+@implements IAsyncDisposable
+@inject HistoricoImportacaoClient HistoricoClient
+@inject IJSRuntime JS
+@using ClosedXML.Excel
+
+<PageTitle>Follow-up de Importacoes</PageTitle>
+
+<section class="filters filters-followup">
+    <div class="field">
+        <label for="dataInicial">Data inicial</label>
+        <InputDate id="dataInicial" @bind-Value="dataInicial" />
+    </div>
+    <div class="field">
+        <label for="dataFinal">Data final</label>
+        <InputDate id="dataFinal" @bind-Value="dataFinal" />
+    </div>
+    <div class="field">
+        <label for="statusFiltro">Status</label>
+        <select id="statusFiltro" @bind="statusFiltro">
+            <option value="Todos">Todos</option>
+            <option value="Sucesso">Sucesso</option>
+            <option value="Falha">Falha</option>
+        </select>
+    </div>
+    <div class="actions">
+        <button class="primary" @onclick="CarregarAsync">Filtrar</button>
+        <button class="secondary" @onclick="LimparAsync">Limpar</button>
+        <button class="secondary" disabled="@(ItensFiltrados.Count == 0)" @onclick="ExportarExcelAsync">Exportar Excel</button>
+    </div>
+</section>
+
+<section class="status refresh-note">
+    Atualizacao automatica a cada 15 segundos enquanto esta pagina estiver aberta.
+</section>
+
+<section class="dashboard-grid">
+    <article class="card dashboard-card total-card">
+        <span>Total de importacoes</span>
+        <strong>@TotalImportacoes</strong>
+        <small>Arquivos processados no periodo filtrado.</small>
+    </article>
+
+    <article class="card dashboard-card success-card">
+        <span>Percentual de sucesso</span>
+        <strong>@PercentualSucesso.ToString("0.0")%</strong>
+        <small>@TotalSucesso importacoes concluidas com sucesso.</small>
+    </article>
+
+    <article class="card dashboard-card error-card">
+        <span>Percentual de falha</span>
+        <strong>@PercentualFalha.ToString("0.0")%</strong>
+        <small>@TotalFalha importacoes com falha.</small>
+    </article>
+
+    <article class="card dashboard-chart-card">
+        <div class="chart-copy">
+            <span>Distribuicao</span>
+            <strong>Sucesso x Falha</strong>
+        </div>
+        <svg class="donut-chart" viewBox="0 0 42 42" aria-label="Grafico de sucesso e falha">
+            <circle class="donut-track" cx="21" cy="21" r="15.915"></circle>
+            <circle class="donut-segment donut-success" cx="21" cy="21" r="15.915"
+                    stroke-dasharray="@PercentualSucesso.ToString(System.Globalization.CultureInfo.InvariantCulture) @((100 - PercentualSucesso).ToString(System.Globalization.CultureInfo.InvariantCulture))"
+                    stroke-dashoffset="25"></circle>
+            <circle class="donut-segment donut-failure" cx="21" cy="21" r="15.915"
+                    stroke-dasharray="@PercentualFalha.ToString(System.Globalization.CultureInfo.InvariantCulture) @((100 - PercentualFalha).ToString(System.Globalization.CultureInfo.InvariantCulture))"
+                    stroke-dashoffset="@((25 - PercentualSucesso).ToString(System.Globalization.CultureInfo.InvariantCulture))"></circle>
+            <text x="21" y="20.5" class="donut-center-value">@TotalImportacoes</text>
+            <text x="21" y="25.5" class="donut-center-label">total</text>
+        </svg>
+        <div class="chart-legend">
+            <span><i class="legend-dot legend-success"></i>Sucesso</span>
+            <span><i class="legend-dot legend-failure"></i>Falha</span>
+        </div>
+    </article>
+</section>
+
+<section class="summary">
+    <article class="card success">
+        <span>Sucesso</span>
+        <strong>@TotalSucesso</strong>
+    </article>
+    <article class="card error">
+        <span>Falha</span>
+        <strong>@TotalFalha</strong>
+    </article>
+    <article class="card neutral">
+        <span>Total</span>
+        <strong>@TotalImportacoes</strong>
+    </article>
+</section>
+
+@if (!string.IsNullOrWhiteSpace(erro))
+{
+    <section class="alert">@erro</section>
+}
+
+@if (carregando)
+{
+    <p class="status">Carregando historico...</p>
+}
+else if (ItensFiltrados.Count == 0)
+{
+    <p class="status">Nenhum arquivo encontrado para o filtro informado.</p>
+}
+else
+{
+    <section class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Data</th>
+                    <th>Arquivo</th>
+                    <th>Origem</th>
+                    <th>Status</th>
+                    <th>Registros</th>
+                    <th>Mensagem</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in ItensFiltrados)
+                {
+                    <tr>
+                        <td>@item.DataProcessamento.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>@item.NomeArquivo</td>
+                        <td>@item.Origem</td>
+                        <td>
+                            <span class="badge @(item.Sucesso ? "badge-success" : "badge-error")">
+                                @(item.Sucesso ? "Sucesso" : "Falhou")
+                            </span>
+                        </td>
+                        <td>@item.RegistrosAfetados</td>
+                        <td>@item.Mensagem</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </section>
+}
+
+@code {
+    private readonly PeriodicTimer _timer = new(TimeSpan.FromSeconds(15));
+    private CancellationTokenSource? _refreshCts;
+    private DateTime? dataInicial = DateTime.Today;
+    private DateTime? dataFinal = DateTime.Today;
+    private string statusFiltro = "Todos";
+    private bool carregando;
+    private string? erro;
+    private List<ImportacaoHistoricoItemViewModel> itens = [];
+
+    private List<ImportacaoHistoricoItemViewModel> ItensFiltrados => itens
+        .Where(item => statusFiltro switch
+        {
+            "Sucesso" => item.Sucesso,
+            "Falha" => !item.Sucesso,
+            _ => true
+        })
+        .ToList();
+
+    private int TotalImportacoes => ItensFiltrados.Count;
+    private int TotalSucesso => ItensFiltrados.Count(x => x.Sucesso);
+    private int TotalFalha => ItensFiltrados.Count(x => !x.Sucesso);
+    private double PercentualSucesso => TotalImportacoes == 0 ? 0 : (double)TotalSucesso / TotalImportacoes * 100;
+    private double PercentualFalha => TotalImportacoes == 0 ? 0 : (double)TotalFalha / TotalImportacoes * 100;
+
+    protected override async Task OnInitializedAsync()
+    {
+        _refreshCts = new CancellationTokenSource();
+        await CarregarAsync();
+        _ = IniciarAtualizacaoAutomaticaAsync(_refreshCts.Token);
+    }
+
+    private async Task CarregarAsync()
+    {
+        carregando = true;
+        erro = null;
+
+        try
+        {
+            itens = (await HistoricoClient.ListarAsync(dataInicial, dataFinal, CancellationToken.None)).ToList();
+        }
+        catch (Exception ex)
+        {
+            erro = $"Nao foi possivel carregar o historico: {ex.Message}";
+            itens = [];
+        }
+        finally
+        {
+            carregando = false;
+            await InvokeAsync(StateHasChanged);
+        }
+    }
+
+    private async Task LimparAsync()
+    {
+        dataInicial = null;
+        dataFinal = null;
+        statusFiltro = "Todos";
+        await CarregarAsync();
+    }
+
+    private async Task ExportarExcelAsync()
+    {
+        using var workbook = new XLWorkbook();
+        var worksheet = workbook.Worksheets.Add("FollowUp");
+
+        worksheet.Cell(1, 1).Value = "Data";
+        worksheet.Cell(1, 2).Value = "Arquivo";
+        worksheet.Cell(1, 3).Value = "Origem";
+        worksheet.Cell(1, 4).Value = "Status";
+        worksheet.Cell(1, 5).Value = "Registros";
+        worksheet.Cell(1, 6).Value = "Mensagem";
+
+        for (var i = 0; i < ItensFiltrados.Count; i++)
+        {
+            var linha = i + 2;
+            var item = ItensFiltrados[i];
+            worksheet.Cell(linha, 1).Value = item.DataProcessamento;
+            worksheet.Cell(linha, 1).Style.DateFormat.Format = "dd/MM/yyyy HH:mm";
+            worksheet.Cell(linha, 2).Value = item.NomeArquivo;
+            worksheet.Cell(linha, 3).Value = item.Origem;
+            worksheet.Cell(linha, 4).Value = item.Sucesso ? "Sucesso" : "Falhou";
+            worksheet.Cell(linha, 5).Value = item.RegistrosAfetados;
+            worksheet.Cell(linha, 6).Value = item.Mensagem;
+        }
+
+        var range = worksheet.Range(1, 1, Math.Max(ItensFiltrados.Count + 1, 2), 6);
+        range.CreateTable();
+        worksheet.Columns().AdjustToContents();
+
+        using var stream = new MemoryStream();
+        workbook.SaveAs(stream);
+        var base64 = Convert.ToBase64String(stream.ToArray());
+
+        var sufixoPeriodo = $"{(dataInicial?.ToString("yyyyMMdd") ?? "inicio")}-{(dataFinal?.ToString("yyyyMMdd") ?? "fim")}";
+        var sufixoStatus = statusFiltro.ToLowerInvariant();
+        var nomeArquivo = $"followup-analitico-{sufixoPeriodo}-{sufixoStatus}.xlsx";
+
+        await JS.InvokeVoidAsync(
+            "followUpDownloads.downloadBase64File",
+            nomeArquivo,
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            base64);
+    }
+
+    private async Task IniciarAtualizacaoAutomaticaAsync(CancellationToken cancellationToken)
+    {
+        try
+        {
+            while (await _timer.WaitForNextTickAsync(cancellationToken))
+            {
+                await CarregarAsync();
+            }
+        }
+        catch (OperationCanceledException)
+        {
+        }
+    }
+
+    public async ValueTask DisposeAsync()
+    {
+        _refreshCts?.Cancel();
+        _refreshCts?.Dispose();
+        _timer.Dispose();
+        await Task.CompletedTask;
+    }
+}

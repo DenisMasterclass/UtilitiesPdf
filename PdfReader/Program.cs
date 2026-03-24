@@ -14,7 +14,7 @@ namespace PdfReader
 {
     internal class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             var services = new ServiceCollection();
             services.AddPdfReaders();
@@ -23,13 +23,14 @@ namespace PdfReader
             var repository = provider.GetRequiredService<IRepository>();
 
             var sb = new StringBuilder();
-            string projetos = @"D:\\PortoBank\\Proposta Técnica\\Projetos";
+            string Propostas = @"D:\\PortoBank\\Proposta Técnica\\Propostas";
 
-            foreach (string arquivo in Directory.GetFiles(projetos, "*.pdf"))
+            foreach (string arquivo in Directory.GetFiles(Propostas, "*.pdf"))
             {
                 Console.WriteLine($"Lendo: {System.IO.Path.GetFileName(arquivo)}");
-                sb = sb.PdfToTxt(projetos + "\\" + $"{System.IO.Path.GetFileName(arquivo)}");
-                repository.CamposProjetos(sb);
+                sb = sb.PdfToTxt(Propostas + "\\" + $"{System.IO.Path.GetFileName(arquivo)}");
+                var Proposta = await repository.CamposPropostas(sb);
+                await repository.InserirPropostaAsync(Proposta);
 
                 Console.Write(sb.ToString());
             }

@@ -1,11 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "2WhQFV82yYw=",
+  "dgSpecHash": "EVR397/EesY=",
   "success": true,
   "projectFilePath": "D:\\PortoBank\\dev\\UtilitiesPdf\\Utils\\Utils.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\popne\\.nuget\\packages\\azure.core\\1.50.0\\azure.core.1.50.0.nupkg.sha512",
     "C:\\Users\\popne\\.nuget\\packages\\azure.identity\\1.17.1\\azure.identity.1.17.1.nupkg.sha512",
+    "C:\\Users\\popne\\.nuget\\packages\\dapper\\2.1.66\\dapper.2.1.66.nupkg.sha512",
     "C:\\Users\\popne\\.nuget\\packages\\itext7\\8.0.0\\itext7.8.0.0.nupkg.sha512",
     "C:\\Users\\popne\\.nuget\\packages\\itext7.commons\\8.0.0\\itext7.commons.8.0.0.nupkg.sha512",
     "C:\\Users\\popne\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\8.0.0\\microsoft.bcl.asyncinterfaces.8.0.0.nupkg.sha512",

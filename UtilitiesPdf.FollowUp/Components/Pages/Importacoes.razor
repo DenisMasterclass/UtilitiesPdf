@@ -1,0 +1,285 @@
+@page "/importacoes"
+@rendermode InteractiveServer
+@using Microsoft.AspNetCore.Components.Forms
+@inject ImportacaoApiClient ImportacaoClient
+
+<PageTitle>Executar Importacoes</PageTitle>
+
+<section class="hero compact">
+    <div>
+        <p class="eyebrow">Execucao</p>
+        <h1>Acione os 3 endpoints de importacao</h1>
+        <p class="hero-copy">Use esta tela para processar um unico PDF, uma lista de PDFs ou todos os PDFs de uma pasta.</p>
+    </div>
+</section>
+
+@if (!string.IsNullOrWhiteSpace(erroGeral))
+{
+    <section class="alert">@erroGeral</section>
+}
+
+@if (!string.IsNullOrWhiteSpace(ultimoSucesso))
+{
+    <section class="status success-banner">@ultimoSucesso</section>
+}
+
+<section class="execution-grid">
+    <article class="panel">
+        <h2>Arquivo unico</h2>
+        <p>Seleciona um PDF e envia para o endpoint `importar`.</p>
+        <InputFile OnChange="SelecionarArquivoUnico" accept=".pdf" />
+        @if (arquivoUnico is not null)
+        {
+            <span class="helper">Selecionado: @arquivoUnico.Name</span>
+        }
+        <button class="primary" disabled="@(arquivoUnico is null || carregandoUnico)" @onclick="ExecutarArquivoUnicoAsync">
+            @(carregandoUnico ? "Processando..." : "Importar arquivo")
+        </button>
+        <div class="progress-block">
+            <div class="progress-meta">
+                <span>@(carregandoUnico ? "Enviando arquivo..." : resultadoUnico is not null ? "Execucao concluida" : "Aguardando execucao")</span>
+                <span>@(carregandoUnico ? "Em andamento" : resultadoUnico is not null ? "100%" : "0%")</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill @(carregandoUnico ? "progress-indeterminate" : string.Empty)" style="width:@(carregandoUnico ? "45%" : resultadoUnico is not null ? "100%" : "0%")"></div>
+            </div>
+        </div>
+        @if (resultadoUnico is not null)
+        {
+            <div class="result-box @(resultadoUnico.Sucesso ? "result-success" : "result-error")">
+                <strong>@resultadoUnico.NomeArquivo</strong>
+                <span>Status: @(resultadoUnico.Sucesso ? "Sucesso" : "Falhou")</span>
+                <span>Registros: @resultadoUnico.RegistrosAfetados</span>
+                <span>@resultadoUnico.Mensagem</span>
+            </div>
+        }
+    </article>
+
+    <article class="panel">
+        <h2>Lote de arquivos</h2>
+        <p>Seleciona varios PDFs e envia para o endpoint `importar-lote`.</p>
+        <InputFile OnChange="SelecionarArquivosLote" accept=".pdf" multiple />
+        @if (!string.IsNullOrWhiteSpace(erroSelecaoLote))
+        {
+            <span class="helper">@erroSelecaoLote</span>
+        }
+        else if (arquivosLote.Count > 0)
+        {
+            <span class="helper">Arquivos selecionados: @arquivosLote.Count</span>
+        }
+        <button class="primary" disabled="@(arquivosLote.Count == 0 || carregandoLote)" @onclick="ExecutarLoteAsync">
+            @(carregandoLote ? "Processando..." : "Importar lote")
+        </button>
+        <div class="progress-block">
+            <div class="progress-meta">
+                <span>@ObterStatusLote(resultadoLote, carregandoLote, "lote", progressoLote)</span>
+                <span>@ObterPercentualTexto(resultadoLote, carregandoLote, progressoLote)</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill" style="width:@ObterPercentualBarra(resultadoLote, carregandoLote, progressoLote)"></div>
+            </div>
+        </div>
+        @if (progressoLote is not null && carregandoLote)
+        {
+            <span class="helper">Arquivo atual: @progressoLote.NomeArquivoAtual</span>
+        }
+        @if (resultadoLote is not null)
+        {
+            <div class="batch-summary">
+                <span>Total: @resultadoLote.TotalArquivos</span>
+                <span>Sucesso: @resultadoLote.ArquivosProcessadosComSucesso</span>
+                <span>Falha: @resultadoLote.ArquivosComErro</span>
+            </div>
+        }
+    </article>
+
+    <article class="panel">
+        <h2>Pasta local</h2>
+        <p>Informa um caminho de pasta para executar o endpoint `importar-pasta`.</p>
+        <input @bind="caminhoPasta" placeholder="D:\\PortoBank\\Proposta Tecnica\\Propostas" />
+        <button class="primary" disabled="@(string.IsNullOrWhiteSpace(caminhoPasta) || carregandoPasta)" @onclick="ExecutarPastaAsync">
+            @(carregandoPasta ? "Processando..." : "Importar pasta")
+        </button>
+        <div class="progress-block">
+            <div class="progress-meta">
+                <span>@ObterStatusLote(resultadoPasta, carregandoPasta, "pasta", null)</span>
+                <span>@ObterPercentualTexto(resultadoPasta, carregandoPasta, null)</span>
+            </div>
+            <div class="progress-track">
+                <div class="progress-fill @(carregandoPasta ? "progress-indeterminate" : string.Empty)" style="width:@ObterPercentualBarra(resultadoPasta, carregandoPasta, null)"></div>
+            </div>
+        </div>
+        @if (resultadoPasta is not null)
+        {
+            <div class="batch-summary">
+                <span>Total: @resultadoPasta.TotalArquivos</span>
+                <span>Sucesso: @resultadoPasta.ArquivosProcessadosComSucesso</span>
+                <span>Falha: @resultadoPasta.ArquivosComErro</span>
+            </div>
+        }
+    </article>
+</section>
+
+@code {
+    private const int MaxArquivosLote = 100;
+    private IBrowserFile? arquivoUnico;
+    private List<IBrowserFile> arquivosLote = [];
+    private string caminhoPasta = string.Empty;
+    private bool carregandoUnico;
+    private bool carregandoLote;
+    private bool carregandoPasta;
+    private string? erroGeral;
+    private string? erroSelecaoLote;
+    private string? ultimoSucesso;
+    private ImportacaoResultadoViewModel? resultadoUnico;
+    private ImportacaoLoteResultadoViewModel? resultadoLote;
+    private ImportacaoLoteResultadoViewModel? resultadoPasta;
+    private ImportacaoLoteProgressoViewModel? progressoLote;
+
+    private void SelecionarArquivoUnico(InputFileChangeEventArgs args)
+    {
+        arquivoUnico = args.File;
+    }
+
+    private void SelecionarArquivosLote(InputFileChangeEventArgs args)
+    {
+        try
+        {
+            erroSelecaoLote = null;
+            arquivosLote = args.GetMultipleFiles(MaxArquivosLote).ToList();
+            progressoLote = null;
+        }
+        catch (InvalidOperationException ex)
+        {
+            arquivosLote = [];
+            progressoLote = null;
+            erroSelecaoLote = $"Selecione no maximo {MaxArquivosLote} arquivos por lote. Detalhe: {ex.Message}";
+        }
+    }
+
+    private async Task ExecutarArquivoUnicoAsync()
+    {
+        if (arquivoUnico is null)
+        {
+            return;
+        }
+
+        carregandoUnico = true;
+        erroGeral = null;
+        ultimoSucesso = null;
+
+        try
+        {
+            resultadoUnico = await ImportacaoClient.ImportarArquivoAsync(arquivoUnico, CancellationToken.None);
+            if (resultadoUnico is not null)
+            {
+                ultimoSucesso = "Importacao concluida. O follow-up sera atualizado automaticamente na outra tela.";
+            }
+        }
+        catch (Exception ex)
+        {
+            erroGeral = $"Falha ao executar importacao unica: {ex.Message}";
+        }
+        finally
+        {
+            carregandoUnico = false;
+        }
+    }
+
+    private async Task ExecutarLoteAsync()
+    {
+        if (arquivosLote.Count == 0)
+        {
+            return;
+        }
+
+        carregandoLote = true;
+        erroGeral = null;
+        ultimoSucesso = null;
+        progressoLote = new ImportacaoLoteProgressoViewModel
+        {
+            TotalArquivos = arquivosLote.Count,
+            ArquivosProcessados = 0,
+            NomeArquivoAtual = arquivosLote[0].Name
+        };
+
+        var progress = new Progress<ImportacaoLoteProgressoViewModel>(valor =>
+        {
+            progressoLote = valor;
+            InvokeAsync(StateHasChanged);
+        });
+
+        try
+        {
+            resultadoLote = await ImportacaoClient.ImportarArquivosAsync(arquivosLote, progress, CancellationToken.None);
+            if (resultadoLote is not null)
+            {
+                ultimoSucesso = "Importacao em lote concluida. O follow-up sera atualizado automaticamente na outra tela.";
+            }
+        }
+        catch (Exception ex)
+        {
+            erroGeral = $"Falha ao executar importacao em lote: {ex.Message}";
+        }
+        finally
+        {
+            carregandoLote = false;
+        }
+    }
+
+    private async Task ExecutarPastaAsync()
+    {
+        carregandoPasta = true;
+        erroGeral = null;
+        ultimoSucesso = null;
+
+        try
+        {
+            resultadoPasta = await ImportacaoClient.ImportarPastaAsync(caminhoPasta, CancellationToken.None);
+            if (resultadoPasta is not null)
+            {
+                ultimoSucesso = "Importacao por pasta concluida. O follow-up sera atualizado automaticamente na outra tela.";
+            }
+        }
+        catch (Exception ex)
+        {
+            erroGeral = $"Falha ao executar importacao por pasta: {ex.Message}";
+        }
+        finally
+        {
+            carregandoPasta = false;
+        }
+    }
+
+    private static string ObterStatusLote(ImportacaoLoteResultadoViewModel? resultado, bool carregando, string origem, ImportacaoLoteProgressoViewModel? progresso)
+    {
+        if (carregando)
+        {
+            return progresso is not null
+                ? $"Processando {progresso.ArquivosProcessados + (progresso.ArquivosProcessados < progresso.TotalArquivos ? 1 : 0)} de {progresso.TotalArquivos} por {origem}..."
+                : $"Executando importacao por {origem}...";
+        }
+
+        return resultado is null ? "Aguardando execucao" : "Execucao concluida";
+    }
+
+    private static string ObterPercentualTexto(ImportacaoLoteResultadoViewModel? resultado, bool carregando, ImportacaoLoteProgressoViewModel? progresso)
+    {
+        if (carregando)
+        {
+            return progresso is null ? "Em andamento" : $"{progresso.Percentual}%";
+        }
+
+        return resultado is null ? "0%" : "100%";
+    }
+
+    private static string ObterPercentualBarra(ImportacaoLoteResultadoViewModel? resultado, bool carregando, ImportacaoLoteProgressoViewModel? progresso)
+    {
+        if (carregando)
+        {
+            return progresso is null ? "45%" : $"{Math.Max(progresso.Percentual, 4)}%";
+        }
+
+        return resultado is null ? "0%" : "100%";
+    }
+}
