@@ -1,0 +1,562 @@
+:root {
+    --bg: #add8e6;
+    --panel: #f4fbff;
+    --line: #87ceeb;
+    --text: #1d3c78;
+    --muted: #4169e1;
+    --success: #1e90ff;
+    --error: #4169e1;
+    --accent: #00bfff;
+}
+
+html, body {
+    margin: 0;
+    font-family: Georgia, "Times New Roman", serif;
+    background:
+        radial-gradient(circle at top left, rgba(135, 206, 250, 0.92) 0%, rgba(135, 206, 250, 0) 34%),
+        radial-gradient(circle at top right, rgba(0, 191, 255, 0.82) 0%, rgba(0, 191, 255, 0) 32%),
+        radial-gradient(circle at bottom left, rgba(173, 216, 230, 0.9) 0%, rgba(173, 216, 230, 0) 38%),
+        linear-gradient(135deg, #4169e1 0%, #1e90ff 24%, #00bfff 48%, #87cefa 72%, #87ceeb 86%, #add8e6 100%);
+    background-attachment: fixed;
+    color: var(--text);
+}
+
+button, input, table, select {
+    font: inherit;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.shell {
+    min-height: 100vh;
+}
+
+.topbar {
+    padding: 1.25rem 2.5rem 1rem;
+    border-bottom: 1px solid rgba(65, 105, 225, 0.12);
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    background: linear-gradient(180deg, rgba(244, 251, 255, 0.58) 0%, rgba(244, 251, 255, 0.18) 100%);
+    backdrop-filter: blur(8px);
+}
+
+.brand-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    flex: 1 1 540px;
+}
+
+.porto-logo {
+    flex: 0 0 auto;
+    width: 170px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
+.porto-logo svg {
+    width: 160px;
+    height: auto;
+    filter: drop-shadow(0 10px 18px rgba(30, 144, 255, 0.25));
+}
+
+.main-nav {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+.main-nav a {
+    padding: 0.75rem 1rem;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: rgba(244, 251, 255, 0.82);
+}
+
+.main-nav a.active {
+    background: #4169e1;
+    color: #f4fbff;
+}
+
+.eyebrow {
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.2rem;
+    color: var(--accent);
+    font-size: 0.75rem;
+}
+
+.topbar h1 {
+    margin: 0.35rem 0 0;
+    font-size: clamp(2rem, 4vw, 3.4rem);
+    line-height: 1;
+}
+
+.content {
+    padding: 2rem 2.5rem 3rem;
+}
+
+.hero, .filters, .summary, .table-wrap, .alert, .status, .panel, .dashboard-grid > article {
+    background: rgba(244, 251, 255, 0.86);
+    border: 1px solid rgba(135, 206, 235, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 18px 40px rgba(30, 144, 255, 0.14);
+    backdrop-filter: blur(10px);
+}
+
+.hero {
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.hero.compact {
+    margin-bottom: 1rem;
+}
+
+.hero-copy {
+    max-width: 52rem;
+    color: var(--muted);
+}
+
+.hub-grid, .execution-grid, .dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+}
+
+.execution-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.dashboard-grid {
+    grid-template-columns: 1fr 1fr 1fr 1.3fr;
+    margin-top: 1.25rem;
+}
+
+.hub-card, .panel, .dashboard-grid > article {
+    padding: 1.4rem;
+}
+
+.hub-card {
+    display: block;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: rgba(244, 251, 255, 0.86);
+    border: 1px solid rgba(135, 206, 235, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 18px 40px rgba(30, 144, 255, 0.14);
+    backdrop-filter: blur(10px);
+}
+
+.hub-card:hover {
+    transform: translateY(-3px);
+}
+
+.hub-kicker {
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.14rem;
+    font-size: 0.76rem;
+}
+
+.panel {
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.panel h2 {
+    margin: 0;
+}
+
+.panel p {
+    margin: 0;
+    color: var(--muted);
+}
+
+.helper {
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.filters {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    padding: 1.25rem;
+    align-items: end;
+}
+
+.filters-followup {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.field label {
+    color: var(--muted);
+    font-size: 0.95rem;
+}
+
+.field input,
+.field select,
+.panel input {
+    padding: 0.8rem 0.9rem;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.9);
+}
+
+.actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+}
+
+button {
+    border: none;
+    border-radius: 999px;
+    padding: 0.8rem 1.3rem;
+    cursor: pointer;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.primary {
+    background: #4169e1;
+    color: #f4fbff;
+}
+
+.secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--line);
+}
+
+.summary {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    margin-top: 1.25rem;
+    padding: 1rem;
+}
+
+.card {
+    border-radius: 16px;
+    padding: 1rem 1.1rem;
+    background: rgba(250, 253, 255, 0.92);
+    border: 1px solid var(--line);
+}
+
+.card span {
+    display: block;
+    color: var(--muted);
+    margin-bottom: 0.35rem;
+}
+
+.card strong {
+    font-size: 2rem;
+}
+
+.card small {
+    display: block;
+    margin-top: 0.45rem;
+    color: var(--muted);
+}
+
+.card.success strong {
+    color: var(--success);
+}
+
+.card.error strong {
+    color: var(--error);
+}
+
+.dashboard-card strong {
+    font-size: 2.2rem;
+}
+
+.dashboard-chart-card {
+    display: grid;
+    grid-template-columns: auto 120px;
+    align-items: center;
+    gap: 1rem;
+}
+
+.chart-copy span {
+    display: block;
+    color: var(--muted);
+    margin-bottom: 0.35rem;
+}
+
+.chart-copy strong {
+    font-size: 1.45rem;
+}
+
+.donut-chart {
+    width: 120px;
+    height: 120px;
+    overflow: visible;
+}
+
+.donut-track,
+.donut-segment {
+    fill: none;
+    stroke-width: 3.2;
+}
+
+.donut-track {
+    stroke: rgba(135, 206, 235, 0.35);
+}
+
+.donut-segment {
+    transform: rotate(-90deg);
+    transform-origin: 50% 50%;
+    stroke-linecap: round;
+}
+
+.donut-success {
+    stroke: #1e90ff;
+}
+
+.donut-failure {
+    stroke: #4169e1;
+}
+
+.donut-center-value {
+    fill: var(--text);
+    font-size: 0.42rem;
+    font-weight: 700;
+    text-anchor: middle;
+}
+
+.donut-center-label {
+    fill: var(--muted);
+    font-size: 0.16rem;
+    text-anchor: middle;
+    text-transform: uppercase;
+    letter-spacing: 0.08rem;
+}
+
+.chart-legend {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    grid-column: 1 / -1;
+    color: var(--muted);
+    font-size: 0.92rem;
+}
+
+.legend-dot {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    border-radius: 999px;
+    margin-right: 0.45rem;
+}
+
+.legend-success {
+    background: #1e90ff;
+}
+
+.legend-failure {
+    background: #4169e1;
+}
+
+.alert, .status {
+    margin-top: 1.25rem;
+    padding: 1rem 1.2rem;
+}
+
+.alert {
+    color: var(--error);
+}
+
+.success-banner {
+    color: var(--success);
+}
+
+.refresh-note {
+    color: var(--muted);
+}
+
+.table-wrap {
+    margin-top: 1.25rem;
+    overflow: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 1px solid rgba(65, 105, 225, 0.08);
+    vertical-align: top;
+}
+
+th {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08rem;
+    color: var(--muted);
+    background: rgba(135, 206, 250, 0.28);
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 999px;
+    padding: 0.25rem 0.7rem;
+    font-size: 0.82rem;
+}
+
+.badge-success {
+    background: rgba(30, 144, 255, 0.14);
+    color: var(--success);
+}
+
+.badge-error {
+    background: rgba(65, 105, 225, 0.14);
+    color: var(--error);
+}
+
+.result-box, .mini-row, .batch-summary, .progress-block {
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: rgba(250, 253, 255, 0.92);
+    padding: 0.9rem;
+}
+
+.result-box {
+    display: grid;
+    gap: 0.35rem;
+}
+
+.result-success {
+    border-color: rgba(30, 144, 255, 0.4);
+}
+
+.result-error {
+    border-color: rgba(65, 105, 225, 0.4);
+}
+
+.batch-summary {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.mini-table {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.mini-row {
+    display: grid;
+    gap: 0.4rem;
+}
+
+.progress-block {
+    display: grid;
+    gap: 0.55rem;
+}
+
+.progress-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    color: var(--muted);
+    font-size: 0.9rem;
+}
+
+.progress-track {
+    width: 100%;
+    height: 12px;
+    border-radius: 999px;
+    overflow: hidden;
+    background: rgba(135, 206, 235, 0.34);
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, #4169e1 0%, #1e90ff 40%, #00bfff 75%, #87cefa 100%);
+    transition: width 0.25s ease;
+}
+
+.progress-indeterminate {
+    animation: pulse-slide 1.4s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-slide {
+    from {
+        transform: translateX(-15%);
+    }
+    to {
+        transform: translateX(55%);
+    }
+}
+
+@media (max-width: 1200px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .execution-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 900px) {
+    .content, .topbar {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .topbar {
+        align-items: stretch;
+    }
+
+    .brand-wrap {
+        flex-basis: 100%;
+    }
+
+    .porto-logo {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    .porto-logo svg {
+        width: 132px;
+    }
+
+    .filters, .summary, .hub-grid, .dashboard-grid, .filters-followup {
+        grid-template-columns: 1fr;
+    }
+
+    .dashboard-chart-card {
+        grid-template-columns: 1fr;
+    }
+
+    .progress-meta {
+        flex-direction: column;
+    }
+}
+
+

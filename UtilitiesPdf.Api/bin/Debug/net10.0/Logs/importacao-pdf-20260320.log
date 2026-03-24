@@ -1,0 +1,287 @@
+DataUtc: 2026-03-20T14:52:53.5572859Z
+Arquivo: Template_PropostaTecnica_SobDemanda_PROJETOS_V02C01.docx (2).pdf
+Erro: Index was outside the bounds of the array.
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at Utils.Repositories.Repository.CamposProjetos(StringBuilder sb) in D:\PortoBank\dev\UtilitiesPdf\Utils\Repositories\Repository.cs:line 91
+   at UtilitiesPdf.Api.Services.PdfImportService.ProcessarArquivoDoDiscoAsync(String caminhoArquivo, String nomeArquivo, String origem, CancellationToken cancellationToken) in D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.Api\Services\PdfImportService.cs:line 125
+--------------------------------------------------------------------------------
+DataUtc: 2026-03-20T15:43:37.6705590Z
+Arquivo: Template_PropostaTecnica_SobDemanda_PROJETOS_V02C01.docx (4).pdf
+Erro: String or binary data would be truncated in table 'Financeiro.dbo.Projeto', column 'Vigencia'. Truncated value: 'GESTAO_FORNEC_103 
+Indeterminada 08/02//2024 08/02'.
+The statement has been terminated.
+Microsoft.Data.SqlClient.SqlException (0x80131904): String or binary data would be truncated in table 'Financeiro.dbo.Projeto', column 'Vigencia'. Truncated value: 'GESTAO_FORNEC_103 
+Indeterminada 08/02//2024 08/02'.
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteNonQuery(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteNonQueryAsync>b__193_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at Utils.Repositories.Repository.InserirProjetoAsync(ProjetoEntity projeto) in D:\PortoBank\dev\UtilitiesPdf\Utils\Repositories\Repository.cs:line 161
+   at UtilitiesPdf.Api.Services.PdfImportService.ProcessarArquivoDoDiscoAsync(String caminhoArquivo, String nomeArquivo, String origem, CancellationToken cancellationToken) in D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.Api\Services\PdfImportService.cs:line 126
+ClientConnectionId:b937d8e7-d60a-4a04-a258-26b5c3b1c688
+Error Number:2628,State:1,Class:16
+--------------------------------------------------------------------------------
+DataUtc: 2026-03-20T15:46:24.7869309Z
+Arquivo: Template_PropostaTecnica_SobDemanda_PROJETOS_V02C01.docx (2).pdf
+Erro: Index was outside the bounds of the array.
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at Utils.Repositories.Repository.CamposProjetos(StringBuilder sb) in D:\PortoBank\dev\UtilitiesPdf\Utils\Repositories\Repository.cs:line 91
+   at UtilitiesPdf.Api.Services.PdfImportService.ProcessarArquivoDoDiscoAsync(String caminhoArquivo, String nomeArquivo, String origem, CancellationToken cancellationToken) in D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.Api\Services\PdfImportService.cs:line 125
+--------------------------------------------------------------------------------
+DataUtc: 2026-03-20T16:02:45.5538504Z
+Arquivo: Template_PropostaTecnica_SobDemanda_PROJETOS_V02C01.docx (2).pdf
+Erro: Index was outside the bounds of the array.
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at Utils.Repositories.Repository.CamposProjetos(StringBuilder sb)
+   at UtilitiesPdf.Api.Services.PdfImportService.ProcessarArquivoDoDiscoAsync(String caminhoArquivo, String nomeArquivo, String origem, CancellationToken cancellationToken) in D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.Api\Services\PdfImportService.cs:line 125
+--------------------------------------------------------------------------------
+DataUtc: 2026-03-20T16:03:59.7730760Z
+Arquivo: Template_PropostaTecnica_SobDemanda_PROJETOS_V02C01.docx (2).pdf
+Erro: Index was outside the bounds of the array.
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at Utils.Repositories.Repository.CamposProjetos(StringBuilder sb) in D:\PortoBank\dev\UtilitiesPdf\Utils\Repositories\Repository.cs:line 91
+   at UtilitiesPdf.Api.Services.PdfImportService.ProcessarArquivoDoDiscoAsync(String caminhoArquivo, String nomeArquivo, String origem, CancellationToken cancellationToken) in D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.Api\Services\PdfImportService.cs:line 125
+--------------------------------------------------------------------------------
+DataUtc: 2026-03-20T16:05:18.2217609Z
+Arquivo: Template_PropostaTecnica_SobDemanda_PROJETOS_V02C01.docx (2).pdf
+Erro: Index was outside the bounds of the array.
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at Utils.Repositories.Repository.CamposProjetos(StringBuilder sb)
+   at UtilitiesPdf.Api.Services.PdfImportService.ProcessarArquivoDoDiscoAsync(String caminhoArquivo, String nomeArquivo, String origem, CancellationToken cancellationToken) in D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.Api\Services\PdfImportService.cs:line 125
+--------------------------------------------------------------------------------
+DataUtc: 2026-03-20T16:05:57.2450455Z
+Arquivo: Template_PropostaTecnica_SobDemanda_PROJETOS_V02C01.docx (2).pdf
+Erro: Index was outside the bounds of the array.
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at Utils.Repositories.Repository.CamposProjetos(StringBuilder sb)
+   at UtilitiesPdf.Api.Services.PdfImportService.ProcessarArquivoDoDiscoAsync(String caminhoArquivo, String nomeArquivo, String origem, CancellationToken cancellationToken) in D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.Api\Services\PdfImportService.cs:line 125
+--------------------------------------------------------------------------------
+DataUtc: 2026-03-20T16:08:13.8157482Z
+Arquivo: Template_PropostaTecnica_SobDemanda_PROJETOS_V02C01.docx (2).pdf
+Erro: Index was outside the bounds of the array.
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at Utils.Repositories.Repository.CamposProjetos(StringBuilder sb)
+   at UtilitiesPdf.Api.Services.PdfImportService.ProcessarArquivoDoDiscoAsync(String caminhoArquivo, String nomeArquivo, String origem, CancellationToken cancellationToken) in D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.Api\Services\PdfImportService.cs:line 125
+--------------------------------------------------------------------------------
+DataUtc: 2026-03-20T16:11:00.5528471Z
+Arquivo: Template_PropostaTecnica_SobDemanda_PROJETOS_V02C01.docx (2).pdf
+Erro: Index was outside the bounds of the array.
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at Utils.Repositories.Repository.CamposProjetos(StringBuilder sb)
+   at UtilitiesPdf.Api.Services.PdfImportService.ProcessarArquivoDoDiscoAsync(String caminhoArquivo, String nomeArquivo, String origem, CancellationToken cancellationToken) in D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.Api\Services\PdfImportService.cs:line 125
+--------------------------------------------------------------------------------
+DataUtc: 2026-03-20T16:15:15.8298455Z
+Arquivo: Template_PropostaTecnica_SobDemanda_PROJETOS_V02C01.docx (2).pdf
+Erro: SqlDateTime overflow. Must be between 1/1/1753 12:00:00 AM and 12/31/9999 11:59:59 PM.
+System.Data.SqlTypes.SqlTypeException: SqlDateTime overflow. Must be between 1/1/1753 12:00:00 AM and 12/31/9999 11:59:59 PM.
+   at System.Data.SqlTypes.SqlDateTime.FromTimeSpan(TimeSpan value)
+   at System.Data.SqlTypes.SqlDateTime.FromDateTime(DateTime value)
+   at System.Data.SqlTypes.SqlDateTime..ctor(DateTime value)
+   at Microsoft.Data.SqlClient.MetaType.FromDateTime(DateTime dateTime, Byte cb)
+   at Microsoft.Data.SqlClient.TdsParser.WriteUnterminatedValue(Object value, MetaType type, Byte scale, Int32 actualLength, Int32 encodingByteSize, Int32 offset, TdsParserStateObject stateObj, Int32 paramSize, Boolean isDataFeed)
+   at Microsoft.Data.SqlClient.TdsParser.WriteValue(Object value, MetaType type, Byte scale, Int32 actualLength, Int32 encodingByteSize, Int32 offset, TdsParserStateObject stateObj, Int32 paramSize, Boolean isDataFeed)
+   at Microsoft.Data.SqlClient.TdsParser.TDSExecuteRPCAddParameter(TdsParserStateObject stateObj, SqlParameter param, MetaType mt, Byte options, SqlCommand command, Boolean isAnonymous)
+   at Microsoft.Data.SqlClient.TdsParser.TdsExecuteRPC(SqlCommand cmd, IList`1 rpcArray, Int32 timeout, Boolean inSchema, SqlNotificationRequest notificationRequest, TdsParserStateObject stateObj, Boolean isCommandProc, Boolean sync, TaskCompletionSource`1 completion, Int32 startRpc, Int32 startParam)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReaderTds(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, Boolean isAsync, Int32 timeout, Task& task, Boolean asyncWrite, Boolean inRetry, SqlDataReader ds, Boolean describeParameterEncryptionRequest)
+   at Microsoft.Data.SqlClient.SqlCommand.RunExecuteReader(CommandBehavior cmdBehavior, RunBehavior runBehavior, Boolean returnStream, TaskCompletionSource`1 completion, Int32 timeout, Task& task, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String method)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalExecuteNonQuery(TaskCompletionSource`1 completion, Boolean sendToPipe, Int32 timeout, Boolean& usedCache, Boolean asyncWrite, Boolean inRetry, String methodName)
+   at Microsoft.Data.SqlClient.SqlCommand.BeginExecuteNonQueryInternal(CommandBehavior behavior, AsyncCallback callback, Object stateObject, Int32 timeout, Boolean inRetry, Boolean asyncWrite)
+   at Microsoft.Data.SqlClient.SqlCommand.BeginExecuteNonQueryAsync(AsyncCallback callback, Object stateObject)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteNonQueryAsync>b__193_0(AsyncCallback callback, Object stateObject)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncImpl(Func`3 beginMethod, Func`2 endFunction, Action`1 endAction, Object state, TaskCreationOptions creationOptions)
+   at System.Threading.Tasks.TaskFactory`1.FromAsync(Func`3 beginMethod, Func`2 endMethod, Object state)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalExecuteNonQueryAsync(CancellationToken cancellationToken)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at Utils.Repositories.Repository.InserirProjetoAsync(ProjetoEntity projeto) in D:\PortoBank\dev\UtilitiesPdf\Utils\Repositories\Repository.cs:line 226
+   at UtilitiesPdf.Api.Services.PdfImportService.ProcessarArquivoDoDiscoAsync(String caminhoArquivo, String nomeArquivo, String origem, CancellationToken cancellationToken) in D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.Api\Services\PdfImportService.cs:line 126
+--------------------------------------------------------------------------------
+DataUtc: 2026-03-20T19:50:15.1166215Z
+Arquivo: Template_PropostaTecnica_SobDemanda_PROJETOS_V02C01.docx (2).pdf
+Erro: Violation of PRIMARY KEY constraint 'PK__Projeto__535EA5C0D7A9D224'. Cannot insert duplicate key in object 'dbo.Projeto'. The duplicate key value is (55acd5f1-73ee-4cfa-b429-26ff4a78e1f1).
+The statement has been terminated.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Violation of PRIMARY KEY constraint 'PK__Projeto__535EA5C0D7A9D224'. Cannot insert duplicate key in object 'dbo.Projeto'. The duplicate key value is (55acd5f1-73ee-4cfa-b429-26ff4a78e1f1).
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteNonQuery(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteNonQueryAsync>b__193_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at Utils.Repositories.Repository.InserirProjetoAsync(ProjetoEntity projeto) in D:\PortoBank\dev\UtilitiesPdf\Utils\Repositories\Repository.cs:line 178
+   at UtilitiesPdf.Api.Services.PdfImportService.ProcessarArquivoDoDiscoAsync(String caminhoArquivo, String nomeArquivo, String origem, CancellationToken cancellationToken) in D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.Api\Services\PdfImportService.cs:line 126
+ClientConnectionId:31054d16-67c7-4c46-8317-bda7ba76f2ca
+Error Number:2627,State:1,Class:14
+--------------------------------------------------------------------------------
+DataUtc: 2026-03-20T19:59:57.0441460Z
+Arquivo: Template_PropostaTecnica_SobDemanda_PROJETOS_V02C01.docx (2).pdf
+Erro: Violation of PRIMARY KEY constraint 'PK__Projeto__535EA5C0D7A9D224'. Cannot insert duplicate key in object 'dbo.Projeto'. The duplicate key value is (55acd5f1-73ee-4cfa-b429-26ff4a78e1f1).
+The statement has been terminated.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Violation of PRIMARY KEY constraint 'PK__Projeto__535EA5C0D7A9D224'. Cannot insert duplicate key in object 'dbo.Projeto'. The duplicate key value is (55acd5f1-73ee-4cfa-b429-26ff4a78e1f1).
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteNonQuery(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteNonQueryAsync>b__193_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at Utils.Repositories.Repository.InserirProjetoAsync(ProjetoEntity projeto) in D:\PortoBank\dev\UtilitiesPdf\Utils\Repositories\Repository.cs:line 178
+   at UtilitiesPdf.Api.Services.PdfImportService.ProcessarArquivoDoDiscoAsync(String caminhoArquivo, String nomeArquivo, String origem, CancellationToken cancellationToken) in D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.Api\Services\PdfImportService.cs:line 126
+ClientConnectionId:223a835e-4656-4fea-a34d-81b71a782569
+Error Number:2627,State:1,Class:14
+--------------------------------------------------------------------------------
+DataUtc: 2026-03-20T20:20:12.8461854Z
+Arquivo: Template_PropostaTecnica_SobDemanda_ALOCACAO_V02C01.docx (15).pdf
+Erro: Violation of PRIMARY KEY constraint 'PK__Projeto__535EA5C0D7A9D224'. Cannot insert duplicate key in object 'dbo.Projeto'. The duplicate key value is (adfc9020-7acb-4aca-9a0c-378baa0f327d).
+The statement has been terminated.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Violation of PRIMARY KEY constraint 'PK__Projeto__535EA5C0D7A9D224'. Cannot insert duplicate key in object 'dbo.Projeto'. The duplicate key value is (adfc9020-7acb-4aca-9a0c-378baa0f327d).
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteNonQuery(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at Utils.Repositories.Repository.InserirProjetoAsync(ProjetoEntity projeto) in D:\PortoBank\dev\UtilitiesPdf\Utils\Repositories\Repository.cs:line 178
+   at UtilitiesPdf.Api.Services.PdfImportService.ProcessarArquivoDoDiscoAsync(String caminhoArquivo, String nomeArquivo, String origem, CancellationToken cancellationToken) in D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.Api\Services\PdfImportService.cs:line 126
+ClientConnectionId:d1cf8a97-eeb9-4f11-b655-fa0f628d9c9f
+Error Number:2627,State:1,Class:14
+--------------------------------------------------------------------------------
+DataUtc: 2026-03-20T20:56:21.1886242Z
+Arquivo: Template_PropostaTecnica_SobDemanda_PROJETOS_V02C01.docx (2).pdf
+Erro: Invalid column name 'Analise'.
+Invalid column name 'Requisitos'.
+Invalid column name 'AnaliseProgramacao'.
+Invalid column name 'Testes'.
+Invalid column name 'Programacao'.
+Invalid column name 'Etl'.
+Invalid column name 'Arquitetura'.
+Invalid column name 'EspecificacaoExecucaoTestes'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'Analise'.
+Invalid column name 'Requisitos'.
+Invalid column name 'AnaliseProgramacao'.
+Invalid column name 'Testes'.
+Invalid column name 'Programacao'.
+Invalid column name 'Etl'.
+Invalid column name 'Arquitetura'.
+Invalid column name 'EspecificacaoExecucaoTestes'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteNonQuery(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteNonQueryAsync>b__193_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at Utils.Repositories.Repository.InserirPropostaAsync(PropostaEntity Proposta) in D:\PortoBank\dev\UtilitiesPdf\Utils\Repositories\Repository.cs:line 160
+   at UtilitiesPdf.Api.Services.PdfImportService.ProcessarArquivoDoDiscoAsync(String caminhoArquivo, String nomeArquivo, String origem, CancellationToken cancellationToken) in D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.Api\Services\PdfImportService.cs:line 126
+ClientConnectionId:ea3df365-c59a-4d4c-a988-6e7b14cc9f69
+Error Number:207,State:1,Class:16
+--------------------------------------------------------------------------------
+DataUtc: 2026-03-20T21:04:54.1926257Z
+Arquivo: Template_PropostaTecnica_SobDemanda_PROJETOS_V02C01.docx (2).pdf
+Erro: Invalid column name 'Analise'.
+Invalid column name 'Requisitos'.
+Invalid column name 'AnaliseProgramacao'.
+Invalid column name 'Testes'.
+Invalid column name 'Programacao'.
+Invalid column name 'Etl'.
+Invalid column name 'Arquitetura'.
+Invalid column name 'EspecificacaoExecucaoTestes'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'Analise'.
+Invalid column name 'Requisitos'.
+Invalid column name 'AnaliseProgramacao'.
+Invalid column name 'Testes'.
+Invalid column name 'Programacao'.
+Invalid column name 'Etl'.
+Invalid column name 'Arquitetura'.
+Invalid column name 'EspecificacaoExecucaoTestes'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteNonQuery(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteNonQueryAsync>b__193_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at Utils.Repositories.Repository.InserirPropostaAsync(PropostaEntity Proposta) in D:\PortoBank\dev\UtilitiesPdf\Utils\Repositories\Repository.cs:line 160
+   at UtilitiesPdf.Api.Services.PdfImportService.ProcessarArquivoDoDiscoAsync(String caminhoArquivo, String nomeArquivo, String origem, CancellationToken cancellationToken) in D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.Api\Services\PdfImportService.cs:line 126
+ClientConnectionId:17fbfd98-9af2-4246-b47e-86167b0ee1cf
+Error Number:207,State:1,Class:16
+--------------------------------------------------------------------------------
+DataUtc: 2026-03-20T21:20:36.0076511Z
+Arquivo: Template_PropostaTecnica_SobDemanda_PROJETOS_V02C01.docx (2).pdf
+Erro: Invalid column name 'Analise'.
+Invalid column name 'Requisitos'.
+Invalid column name 'AnaliseProgramacao'.
+Invalid column name 'Testes'.
+Invalid column name 'Programacao'.
+Invalid column name 'Etl'.
+Invalid column name 'Arquitetura'.
+Invalid column name 'EspecificacaoExecucaoTestes'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'Analise'.
+Invalid column name 'Requisitos'.
+Invalid column name 'AnaliseProgramacao'.
+Invalid column name 'Testes'.
+Invalid column name 'Programacao'.
+Invalid column name 'Etl'.
+Invalid column name 'Arquitetura'.
+Invalid column name 'EspecificacaoExecucaoTestes'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteNonQuery(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteNonQueryAsync>b__193_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at Utils.Repositories.Repository.InserirPropostaAsync(PropostaEntity Proposta) in D:\PortoBank\dev\UtilitiesPdf\Utils\Repositories\Repository.cs:line 160
+   at UtilitiesPdf.Api.Services.PdfImportService.ProcessarArquivoDoDiscoAsync(String caminhoArquivo, String nomeArquivo, String origem, CancellationToken cancellationToken) in D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.Api\Services\PdfImportService.cs:line 126
+ClientConnectionId:91ae7273-7102-45e4-87b0-2e4f22b8f0ff
+Error Number:207,State:1,Class:16
+--------------------------------------------------------------------------------

@@ -1,0 +1,8 @@
+wwwroot\app.css
+wwwroot\download.js
+C:\Users\popne\.nuget\packages\microsoft.aspnetcore.app.internal.assets\10.0.3\build\..\_framework\blazor.web.js
+C:\Users\popne\.nuget\packages\microsoft.aspnetcore.app.internal.assets\10.0.3\build\..\_framework\blazor.server.js
+D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.FollowUp\wwwroot\app.css
+D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.FollowUp\wwwroot\download.js
+C:\Users\popne\.nuget\packages\microsoft.aspnetcore.app.internal.assets\10.0.3\_framework\blazor.web.js
+C:\Users\popne\.nuget\packages\microsoft.aspnetcore.app.internal.assets\10.0.3\_framework\blazor.server.js

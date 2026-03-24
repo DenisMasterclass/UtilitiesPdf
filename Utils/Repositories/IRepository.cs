@@ -5,7 +5,8 @@ namespace Utils.Repositories
 {
     public interface IRepository
     {
-        Task<ProjetoEntity> CamposProjetos(StringBuilder sb);
+        Task<PropostaEntity> CamposPropostas(StringBuilder sb);
+        Task<int> InserirPropostaAsync(PropostaEntity Proposta);
 
     }
 }
