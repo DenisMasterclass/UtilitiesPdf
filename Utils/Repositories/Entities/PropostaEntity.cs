@@ -28,6 +28,7 @@ namespace Utils.Repositories.Entities
         public string ForaEscopo { get; set; } = string.Empty;
         public string DocumentoComplementar { get; set; } = string.Empty;
         public StringBuilder Aceite { get; set; } = new StringBuilder();
+        //alocação
         public string GestorContratante { get; set; } = string.Empty;
         public string NomeAlocado { get; set; } = string.Empty;
         public string CpfAlocado { get; set; } = string.Empty;
