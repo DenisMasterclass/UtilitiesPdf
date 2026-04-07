@@ -65,3 +65,9 @@ PdfReader/obj/Debug/net10.0/refint/PdfReader.dll
 PdfReader/obj/PdfReader.csproj.nuget.dgspec.json
 /.vs/UtilitiesPdf
 /.vs/ProjectEvaluation
+/Docs/obj/Debug/net6.0
+/Docs/obj/Release/net6.0
+/Pdf/obj/Release/net6.0
+/Utils/obj/Release/net10.0
+/PdfReader/obj/Release/net10.0
+/.vs
