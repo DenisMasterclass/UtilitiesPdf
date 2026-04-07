@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "API + FollowUp",
+    "Projects": [
+      {
+        "Path": "UtilitiesPdf.Api\\UtilitiesPdf.Api.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "UtilitiesPdf.FollowUp\\UtilitiesPdf.FollowUp.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

@@ -138,3 +138,27 @@ System.Data.SqlTypes.SqlTypeException: SqlDateTime overflow. Must be between 1/1
    at Utils.Repositories.Repository.InserirPropostaAsync(PropostaEntity Proposta)
    at UtilitiesPdf.Api.Services.PdfImportService.ProcessarArquivoDoDiscoAsync(String caminhoArquivo, String nomeArquivo, String origem, CancellationToken cancellationToken) in D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.Api\Services\PdfImportService.cs:line 126
 --------------------------------------------------------------------------------
+DataUtc: 2026-04-07T17:17:16.9653371Z
+Arquivo: Template_PropostaTecnica_SobDemanda_PROJETOS_V02C01.docx.pdf
+Erro: Violation of PRIMARY KEY constraint 'PK__Proposta__535EA5C0ACE32268'. Cannot insert duplicate key in object 'dbo.Proposta'. The duplicate key value is (183bc107-3868-4256-95f2-f9052425071a).
+The statement has been terminated.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Violation of PRIMARY KEY constraint 'PK__Proposta__535EA5C0ACE32268'. Cannot insert duplicate key in object 'dbo.Proposta'. The duplicate key value is (183bc107-3868-4256-95f2-f9052425071a).
+The statement has been terminated.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteNonQuery(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteNonQueryAsync>b__193_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at Utils.Repositories.Repository.InserirPropostaAsync(PropostaEntity Proposta) in D:\PortoBank\dev\UtilitiesPdf\Utils\Repositories\Repository.cs:line 159
+   at UtilitiesPdf.Api.Services.PdfImportService.ProcessarArquivoDoDiscoAsync(String caminhoArquivo, String nomeArquivo, String origem, CancellationToken cancellationToken) in D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.Api\Services\PdfImportService.cs:line 126
+ClientConnectionId:bddaa946-257f-4caf-9cc0-7e75d1290714
+Error Number:2627,State:1,Class:14
+--------------------------------------------------------------------------------

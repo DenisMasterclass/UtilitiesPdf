@@ -159,7 +159,6 @@ D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.FollowUp\obj\Debug\net10.0\rjimswa.ds
 D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.FollowUp\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
 D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.FollowUp\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
 D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.FollowUp\obj\Debug\net10.0\scopedcss\bundle\UtilitiesPdf.FollowUp.styles.css
-D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.FollowUp\obj\Debug\net10.0\compressed\21l2sl78xd-{0}-921z2na513-921z2na513.gz
 D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.FollowUp\obj\Debug\net10.0\compressed\tiq1gjwgxk-{0}-5sj6na0i0p-5sj6na0i0p.gz
 D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.FollowUp\obj\Debug\net10.0\compressed\j7p0cyx9vl-{0}-ax6tuj8tun-ax6tuj8tun.gz
 D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.FollowUp\obj\Debug\net10.0\compressed\6h7jet776j-{0}-zr4b1gdhaw-zr4b1gdhaw.gz
@@ -181,3 +180,11 @@ D:\PortoBank\dev\UtilitiesPdf\artifacts\followup-validate-governanca\UtilitiesPd
 D:\PortoBank\dev\UtilitiesPdf\artifacts\followup-validate-governanca\UtilitiesPdf.FollowUp.runtimeconfig.json
 D:\PortoBank\dev\UtilitiesPdf\artifacts\followup-validate-governanca\UtilitiesPdf.FollowUp.dll
 D:\PortoBank\dev\UtilitiesPdf\artifacts\followup-validate-governanca\UtilitiesPdf.FollowUp.pdb
+D:\PortoBank\dev\UtilitiesPdf\artifacts\followup-validate-nologo\appsettings.json
+D:\PortoBank\dev\UtilitiesPdf\artifacts\followup-validate-nologo\UtilitiesPdf.FollowUp.staticwebassets.runtime.json
+D:\PortoBank\dev\UtilitiesPdf\artifacts\followup-validate-nologo\UtilitiesPdf.FollowUp.staticwebassets.endpoints.json
+D:\PortoBank\dev\UtilitiesPdf\artifacts\followup-validate-nologo\UtilitiesPdf.FollowUp.deps.json
+D:\PortoBank\dev\UtilitiesPdf\artifacts\followup-validate-nologo\UtilitiesPdf.FollowUp.runtimeconfig.json
+D:\PortoBank\dev\UtilitiesPdf\artifacts\followup-validate-nologo\UtilitiesPdf.FollowUp.dll
+D:\PortoBank\dev\UtilitiesPdf\artifacts\followup-validate-nologo\UtilitiesPdf.FollowUp.pdb
+D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.FollowUp\obj\Debug\net10.0\compressed\21l2sl78xd-{0}-povzdtf9p7-povzdtf9p7.gz

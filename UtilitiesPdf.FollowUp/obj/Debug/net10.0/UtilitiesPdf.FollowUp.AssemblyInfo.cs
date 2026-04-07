@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UtilitiesPdf.FollowUp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+64ec4ef67bfe2d5c9f9364983878e17bc569503b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+47f31d4e26a921ed83b94c8180615ce8745b8d34")]
 [assembly: System.Reflection.AssemblyProductAttribute("UtilitiesPdf.FollowUp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UtilitiesPdf.FollowUp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
