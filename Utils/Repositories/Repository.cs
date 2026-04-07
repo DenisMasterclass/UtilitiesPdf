@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Text;
 using System.Text.RegularExpressions;
 using Utils.Repositories.Entities;
+using Utils.Repositories.Enums;
 using Utils.Shared;
 using static Utils.Repositories.Sql.ConfigurationRepositorySQL;
 
@@ -54,14 +55,14 @@ namespace Utils.Repositories
             return string.Empty;
         }
 
-        public async Task<PropostaEntity> CamposPropostas(StringBuilder sb)
+        public async Task<PropostaEntity> CamposPropostas(StringBuilder sb, TipoPt tipoPt)
         {
             PropostaEntity Proposta = new PropostaEntity();
             PacoteEntity pacote = new PacoteEntity();
 
             Proposta.IdProposta = Guid.NewGuid();
             Proposta.IdDocusign = ExtrairValor(sb.ToString(), "Docusign Envelope ID:", "lado");
-            Proposta.TipoPt = ExtrairValor(sb.ToString(), "Identificador", "abaixo");
+            Proposta.TipoPt = tipoPt;
             Proposta.VersaoProposta = ExtrairValor(sb.ToString(), "Vigência Atualização Publicação Versão", "abaixo");
             Proposta.Vigencia = ExtrairBloco(sb.ToString(), "GESTAO_FORNEC_103", "GESTÃO DE FORNECEDORES DE TI");
             Proposta.Fornecedor = ExtrairValor(sb.ToString(), "FORNECEDOR:", "abaixo");
@@ -76,6 +77,7 @@ namespace Utils.Repositories
             Proposta.ForaEscopo = ExtrairBloco(sb.ToString(), "FORA DO ESCOPO", "Nome");
             Proposta.DocumentoComplementar = ExtrairValor(sb.ToString(), "x", "acima");
             Proposta.DocumentoComplementar = ExtrairValor(sb.ToString(), "Existe documento complementar anexado nesta proposta?", "acima");
+
 
             string blocoPacotes = ExtrairBloco(sb.ToString(), "Arquitetura ", "TOTAL DE HORAS:");
             var linhas = blocoPacotes.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
@@ -136,6 +138,7 @@ namespace Utils.Repositories
             if (tipoProposta.ToString().Contains("X8")) Proposta.TipoProposta.Arquitetura = true;
             if (tipoProposta.ToString().Contains("X9")) Proposta.TipoProposta.EspecificacaoExecucaoTestes = true;
 
+
             Proposta.Aceite = new StringBuilder(ExtrairBloco(sb.ToString(), "Termo de aceite:", "O uso deste modelo para ALOCAÇÃO É PROIBIDO"));
 
             return Proposta;
@@ -192,7 +195,8 @@ namespace Utils.Repositories
                         Proposta.TipoProposta.Programacao,
                         Proposta.TipoProposta.Etl,
                         Proposta.TipoProposta.Arquitetura,
-                        Proposta.TipoProposta.EspecificacaoExecucaoTestes
+                        Proposta.TipoProposta.EspecificacaoExecucaoTestes,
+                        IdProposta = Proposta.TipoProposta.IdProposta = idProposta
                     },
                     _context.Transaction);
 

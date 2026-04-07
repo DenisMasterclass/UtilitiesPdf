@@ -14,6 +14,7 @@
         public bool Etl { get; set; }
         public  bool Arquitetura { get; set; }
         public bool EspecificacaoExecucaoTestes { get; set; }
+        public Guid IdProposta { get; set; }
 
     }
 }

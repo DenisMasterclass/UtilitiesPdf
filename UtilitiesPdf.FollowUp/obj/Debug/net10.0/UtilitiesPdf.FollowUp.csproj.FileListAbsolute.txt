@@ -188,3 +188,10 @@ D:\PortoBank\dev\UtilitiesPdf\artifacts\followup-validate-nologo\UtilitiesPdf.Fo
 D:\PortoBank\dev\UtilitiesPdf\artifacts\followup-validate-nologo\UtilitiesPdf.FollowUp.dll
 D:\PortoBank\dev\UtilitiesPdf\artifacts\followup-validate-nologo\UtilitiesPdf.FollowUp.pdb
 D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.FollowUp\obj\Debug\net10.0\compressed\21l2sl78xd-{0}-povzdtf9p7-povzdtf9p7.gz
+D:\PortoBank\dev\UtilitiesPdf\artifacts\followup-validate-tipopt\appsettings.json
+D:\PortoBank\dev\UtilitiesPdf\artifacts\followup-validate-tipopt\UtilitiesPdf.FollowUp.staticwebassets.runtime.json
+D:\PortoBank\dev\UtilitiesPdf\artifacts\followup-validate-tipopt\UtilitiesPdf.FollowUp.staticwebassets.endpoints.json
+D:\PortoBank\dev\UtilitiesPdf\artifacts\followup-validate-tipopt\UtilitiesPdf.FollowUp.deps.json
+D:\PortoBank\dev\UtilitiesPdf\artifacts\followup-validate-tipopt\UtilitiesPdf.FollowUp.runtimeconfig.json
+D:\PortoBank\dev\UtilitiesPdf\artifacts\followup-validate-tipopt\UtilitiesPdf.FollowUp.dll
+D:\PortoBank\dev\UtilitiesPdf\artifacts\followup-validate-tipopt\UtilitiesPdf.FollowUp.pdb

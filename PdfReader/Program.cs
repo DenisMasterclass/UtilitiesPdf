@@ -7,6 +7,7 @@ using Utils.DependencyInjection;
 using Utils.Shared.Repository;
 using static Utils.Repositories.Sql.ConfigurationRepositorySQL;
 using Utils.Repositories;
+using Utils.Repositories.Enums;
 
 
 
@@ -29,7 +30,7 @@ namespace PdfReader
             {
                 Console.WriteLine($"Lendo: {System.IO.Path.GetFileName(arquivo)}");
                 sb = sb.PdfToTxt(Propostas + "\\" + $"{System.IO.Path.GetFileName(arquivo)}");
-                var Proposta = await repository.CamposPropostas(sb);
+                var Proposta = await repository.CamposPropostas(sb, TipoPt.Projeto);
                 await repository.InserirPropostaAsync(Proposta);
 
                 Console.Write(sb.ToString());

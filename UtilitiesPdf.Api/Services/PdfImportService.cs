@@ -2,6 +2,7 @@ using System.Text;
 using Utils.Pdf;
 using Utils.Repositories;
 using UtilitiesPdf.Api.Models;
+using Utils.Repositories.Enums;
 
 namespace UtilitiesPdf.Api.Services;
 
@@ -24,16 +25,16 @@ public class PdfImportService : IPdfImportService
         _logger = logger;
     }
 
-    public async Task<ImportacaoPdfResultado> ProcessarArquivoAsync(IFormFile arquivo, CancellationToken cancellationToken)
+    public async Task<ImportacaoPdfResultado> ProcessarArquivoAsync(IFormFile arquivo, TipoPt tipoPt, CancellationToken cancellationToken)
     {
         if (arquivo is null || arquivo.Length == 0)
         {
-            return new ImportacaoPdfResultado
+            return CriarResultadoBase(new ImportacaoPdfResultado
             {
                 NomeArquivo = arquivo?.FileName ?? string.Empty,
                 Sucesso = false,
                 Mensagem = "Arquivo PDF nao informado ou vazio."
-            };
+            }, tipoPt);
         }
 
         var caminhoTemporario = Path.Combine(Path.GetTempPath(), $"{Guid.NewGuid()}-{Path.GetFileName(arquivo.FileName)}");
@@ -45,7 +46,7 @@ public class PdfImportService : IPdfImportService
                 await arquivo.CopyToAsync(stream, cancellationToken);
             }
 
-            return await ProcessarArquivoDoDiscoAsync(caminhoTemporario, arquivo.FileName, "Upload", cancellationToken);
+            return await ProcessarArquivoDoDiscoAsync(caminhoTemporario, arquivo.FileName, "Upload", tipoPt, cancellationToken);
         }
         finally
         {
@@ -56,45 +57,45 @@ public class PdfImportService : IPdfImportService
         }
     }
 
-    public async Task<ImportacaoPdfLoteResultado> ProcessarArquivosAsync(IEnumerable<IFormFile> arquivos, CancellationToken cancellationToken)
+    public async Task<ImportacaoPdfLoteResultado> ProcessarArquivosAsync(IEnumerable<IFormFile> arquivos, TipoPt tipoPt, CancellationToken cancellationToken)
     {
         var resultados = new List<ImportacaoPdfResultado>();
 
         foreach (var arquivo in arquivos)
         {
-            var resultado = await ProcessarArquivoAsync(arquivo, cancellationToken);
+            var resultado = await ProcessarArquivoAsync(arquivo, tipoPt, cancellationToken);
             resultados.Add(resultado);
         }
 
-        return CriarResultadoLote(resultados);
+        return CriarResultadoLote(resultados, tipoPt);
     }
 
-    public async Task<ImportacaoPdfLoteResultado> ProcessarPastaAsync(string caminhoPasta, CancellationToken cancellationToken)
+    public async Task<ImportacaoPdfLoteResultado> ProcessarPastaAsync(string caminhoPasta, TipoPt tipoPt, CancellationToken cancellationToken)
     {
         if (string.IsNullOrWhiteSpace(caminhoPasta))
         {
             return CriarResultadoLote(
             [
-                new ImportacaoPdfResultado
+                CriarResultadoBase(new ImportacaoPdfResultado
                 {
                     NomeArquivo = string.Empty,
                     Sucesso = false,
                     Mensagem = "Caminho da pasta nao informado."
-                }
-            ]);
+                }, tipoPt)
+            ], tipoPt);
         }
 
         if (!Directory.Exists(caminhoPasta))
         {
             return CriarResultadoLote(
             [
-                new ImportacaoPdfResultado
+                CriarResultadoBase(new ImportacaoPdfResultado
                 {
                     NomeArquivo = caminhoPasta,
                     Sucesso = false,
                     Mensagem = "Pasta nao encontrada."
-                }
-            ]);
+                }, tipoPt)
+            ], tipoPt);
         }
 
         var resultados = new List<ImportacaoPdfResultado>();
@@ -102,17 +103,18 @@ public class PdfImportService : IPdfImportService
 
         foreach (var caminhoArquivo in caminhosArquivos)
         {
-            var resultado = await ProcessarArquivoDoDiscoAsync(caminhoArquivo, Path.GetFileName(caminhoArquivo), "Pasta", cancellationToken);
+            var resultado = await ProcessarArquivoDoDiscoAsync(caminhoArquivo, Path.GetFileName(caminhoArquivo), "Pasta", tipoPt, cancellationToken);
             resultados.Add(resultado);
         }
 
-        return CriarResultadoLote(resultados);
+        return CriarResultadoLote(resultados, tipoPt);
     }
 
     private async Task<ImportacaoPdfResultado> ProcessarArquivoDoDiscoAsync(
         string caminhoArquivo,
         string nomeArquivo,
         string origem,
+        TipoPt tipoPt,
         CancellationToken cancellationToken)
     {
         ImportacaoPdfResultado resultado;
@@ -122,7 +124,7 @@ public class PdfImportService : IPdfImportService
             cancellationToken.ThrowIfCancellationRequested();
 
             var conteudoPdf = new StringBuilder().PdfToTxt(caminhoArquivo);
-            var Proposta = await _repository.CamposPropostas(conteudoPdf);
+            var Proposta = await _repository.CamposPropostas(conteudoPdf, tipoPt);
             var registrosAfetados = await _repository.InserirPropostaAsync(Proposta);
 
             resultado = new ImportacaoPdfResultado
@@ -157,16 +159,25 @@ public class PdfImportService : IPdfImportService
             DataProcessamento = DateTime.Now
         }, cancellationToken);
 
+        return CriarResultadoBase(resultado, tipoPt);
+    }
+
+    private static ImportacaoPdfResultado CriarResultadoBase(ImportacaoPdfResultado resultado, TipoPt tipoPt)
+    {
+        resultado.TipoPt = tipoPt;
+        resultado.TipoPtLabel = tipoPt.GetLabel();
         return resultado;
     }
 
-    private static ImportacaoPdfLoteResultado CriarResultadoLote(List<ImportacaoPdfResultado> resultados)
+    private static ImportacaoPdfLoteResultado CriarResultadoLote(List<ImportacaoPdfResultado> resultados, TipoPt tipoPt)
     {
         return new ImportacaoPdfLoteResultado
         {
             TotalArquivos = resultados.Count,
             ArquivosProcessadosComSucesso = resultados.Count(x => x.Sucesso),
             ArquivosComErro = resultados.Count(x => !x.Sucesso),
+            TipoPt = tipoPt,
+            TipoPtLabel = tipoPt.GetLabel(),
             Resultados = resultados
         };
     }

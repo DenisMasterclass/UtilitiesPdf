@@ -14,18 +14,19 @@ public class ImportacaoApiClient
         _httpClient = httpClient;
     }
 
-    public async Task<ImportacaoResultadoViewModel?> ImportarArquivoAsync(IBrowserFile arquivo, CancellationToken cancellationToken)
+    public async Task<ImportacaoResultadoViewModel?> ImportarArquivoAsync(IBrowserFile arquivo, int tipoPt, CancellationToken cancellationToken)
     {
         using var content = new MultipartFormDataContent();
         using var fileContent = await CriarConteudoArquivoAsync(arquivo, cancellationToken);
         content.Add(fileContent, "Arquivo", arquivo.Name);
 
-        using var response = await _httpClient.PostAsync("api/Propostas/importar", content, cancellationToken);
+        using var response = await _httpClient.PostAsync($"api/Propostas/importar?tipoPt={tipoPt}", content, cancellationToken);
         return await LerRespostaAsync<ImportacaoResultadoViewModel>(response, cancellationToken);
     }
 
     public async Task<ImportacaoLoteResultadoViewModel> ImportarArquivosAsync(
         IReadOnlyList<IBrowserFile> arquivos,
+        int tipoPt,
         IProgress<ImportacaoLoteProgressoViewModel>? progresso,
         CancellationToken cancellationToken)
     {
@@ -44,7 +45,7 @@ public class ImportacaoApiClient
 
             try
             {
-                var resultado = await ImportarArquivoAsync(arquivo, cancellationToken);
+                var resultado = await ImportarArquivoAsync(arquivo, tipoPt, cancellationToken);
                 if (resultado is not null)
                 {
                     resultados.Add(resultado);
@@ -56,7 +57,9 @@ public class ImportacaoApiClient
                 {
                     NomeArquivo = arquivo.Name,
                     Sucesso = false,
-                    Mensagem = ex.Message
+                    Mensagem = ex.Message,
+                    TipoPt = tipoPt,
+                    TipoPtLabel = ObterTipoPtLabelLocal(tipoPt)
                 });
             }
 
@@ -73,13 +76,15 @@ public class ImportacaoApiClient
             TotalArquivos = resultados.Count,
             ArquivosProcessadosComSucesso = resultados.Count(x => x.Sucesso),
             ArquivosComErro = resultados.Count(x => !x.Sucesso),
+            TipoPt = tipoPt,
+            TipoPtLabel = resultados.FirstOrDefault()?.TipoPtLabel ?? ObterTipoPtLabelLocal(tipoPt),
             Resultados = resultados
         };
     }
 
-    public async Task<ImportacaoLoteResultadoViewModel?> ImportarPastaAsync(string caminhoPasta, CancellationToken cancellationToken)
+    public async Task<ImportacaoLoteResultadoViewModel?> ImportarPastaAsync(string caminhoPasta, int tipoPt, CancellationToken cancellationToken)
     {
-        using var response = await _httpClient.PostAsJsonAsync("api/Propostas/importar-pasta", new { caminhoPasta }, cancellationToken);
+        using var response = await _httpClient.PostAsJsonAsync($"api/Propostas/importar-pasta?tipoPt={tipoPt}", new { caminhoPasta }, cancellationToken);
         return await LerRespostaAsync<ImportacaoLoteResultadoViewModel>(response, cancellationToken);
     }
 
@@ -112,5 +117,15 @@ public class ImportacaoApiClient
         {
             PropertyNameCaseInsensitive = true
         }) ?? throw new InvalidOperationException("Resposta da API vazia ou invalida.");
+    }
+
+    private static string ObterTipoPtLabelLocal(int tipoPt)
+    {
+        return tipoPt switch
+        {
+            1 => "Projeto",
+            2 => "Alocacao",
+            _ => "Nao informado"
+        };
     }
 }

@@ -66,6 +66,15 @@
         "tags": [
           "Propostas"
         ],
+        "parameters": [
+          {
+            "name": "tipoPt",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/TipoPt"
+            }
+          }
+        ],
         "requestBody": {
           "content": {
             "multipart/form-data": {
@@ -137,6 +146,15 @@
       "post": {
         "tags": [
           "Propostas"
+        ],
+        "parameters": [
+          {
+            "name": "tipoPt",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/TipoPt"
+            }
+          }
         ],
         "requestBody": {
           "content": {
@@ -213,6 +231,15 @@
       "post": {
         "tags": [
           "Propostas"
+        ],
+        "parameters": [
+          {
+            "name": "tipoPt",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/TipoPt"
+            }
+          }
         ],
         "requestBody": {
           "content": {
@@ -398,6 +425,14 @@
           }
         },
         "additionalProperties": { }
+      },
+      "TipoPt": {
+        "enum": [
+          1,
+          2
+        ],
+        "type": "integer",
+        "format": "int32"
       }
     }
   },

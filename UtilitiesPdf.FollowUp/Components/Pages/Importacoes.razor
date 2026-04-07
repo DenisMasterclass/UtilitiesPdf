@@ -23,6 +23,16 @@
     <section class="status success-banner">@ultimoSucesso</section>
 }
 
+<section class="filters import-type-filter">
+    <div class="field">
+        <label for="tipoPt">Tipo da proposta</label>
+        <select id="tipoPt" @bind="tipoPtSelecionado">
+            <option value="1">Projeto</option>
+            <option value="2">Alocacao</option>
+        </select>
+    </div>
+</section>
+
 <section class="execution-grid">
     <article class="panel">
         <h2>Arquivo unico</h2>
@@ -48,6 +58,10 @@
         {
             <div class="result-box @(resultadoUnico.Sucesso ? "result-success" : "result-error")">
                 <strong>@resultadoUnico.NomeArquivo</strong>
+                @if (!string.IsNullOrWhiteSpace(resultadoUnico.TipoPtLabel))
+                {
+                    <span>Tipo: @resultadoUnico.TipoPtLabel</span>
+                }
                 <span>Status: @(resultadoUnico.Sucesso ? "Sucesso" : "Falhou")</span>
                 <span>Registros: @resultadoUnico.RegistrosAfetados</span>
                 <span>@resultadoUnico.Mensagem</span>
@@ -86,6 +100,10 @@
         @if (resultadoLote is not null)
         {
             <div class="batch-summary">
+                @if (!string.IsNullOrWhiteSpace(resultadoLote.TipoPtLabel))
+                {
+                    <span>Tipo: @resultadoLote.TipoPtLabel</span>
+                }
                 <span>Total: @resultadoLote.TotalArquivos</span>
                 <span>Sucesso: @resultadoLote.ArquivosProcessadosComSucesso</span>
                 <span>Falha: @resultadoLote.ArquivosComErro</span>
@@ -112,6 +130,10 @@
         @if (resultadoPasta is not null)
         {
             <div class="batch-summary">
+                @if (!string.IsNullOrWhiteSpace(resultadoPasta.TipoPtLabel))
+                {
+                    <span>Tipo: @resultadoPasta.TipoPtLabel</span>
+                }
                 <span>Total: @resultadoPasta.TotalArquivos</span>
                 <span>Sucesso: @resultadoPasta.ArquivosProcessadosComSucesso</span>
                 <span>Falha: @resultadoPasta.ArquivosComErro</span>
@@ -125,6 +147,7 @@
     private IBrowserFile? arquivoUnico;
     private List<IBrowserFile> arquivosLote = [];
     private string caminhoPasta = string.Empty;
+    private int tipoPtSelecionado = 1;
     private bool carregandoUnico;
     private bool carregandoLote;
     private bool carregandoPasta;
@@ -170,7 +193,7 @@
 
         try
         {
-            resultadoUnico = await ImportacaoClient.ImportarArquivoAsync(arquivoUnico, CancellationToken.None);
+            resultadoUnico = await ImportacaoClient.ImportarArquivoAsync(arquivoUnico, tipoPtSelecionado, CancellationToken.None);
             if (resultadoUnico is not null)
             {
                 ultimoSucesso = "Importacao concluida. O follow-up sera atualizado automaticamente na outra tela.";
@@ -211,7 +234,7 @@
 
         try
         {
-            resultadoLote = await ImportacaoClient.ImportarArquivosAsync(arquivosLote, progress, CancellationToken.None);
+            resultadoLote = await ImportacaoClient.ImportarArquivosAsync(arquivosLote, tipoPtSelecionado, progress, CancellationToken.None);
             if (resultadoLote is not null)
             {
                 ultimoSucesso = "Importacao em lote concluida. O follow-up sera atualizado automaticamente na outra tela.";
@@ -235,7 +258,7 @@
 
         try
         {
-            resultadoPasta = await ImportacaoClient.ImportarPastaAsync(caminhoPasta, CancellationToken.None);
+            resultadoPasta = await ImportacaoClient.ImportarPastaAsync(caminhoPasta, tipoPtSelecionado, CancellationToken.None);
             if (resultadoPasta is not null)
             {
                 ultimoSucesso = "Importacao por pasta concluida. O follow-up sera atualizado automaticamente na outra tela.";

@@ -117,3 +117,9 @@ D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-startup-resilience\Utilitie
 D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-startup-resilience\UtilitiesPdf.Api.runtimeconfig.json
 D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-startup-resilience\UtilitiesPdf.Api.dll
 D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-startup-resilience\UtilitiesPdf.Api.pdb
+D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-enum-label\appsettings.json
+D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-enum-label\UtilitiesPdf.Api.staticwebassets.endpoints.json
+D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-enum-label\UtilitiesPdf.Api.deps.json
+D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-enum-label\UtilitiesPdf.Api.runtimeconfig.json
+D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-enum-label\UtilitiesPdf.Api.dll
+D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-enum-label\UtilitiesPdf.Api.pdb

@@ -51,3 +51,6 @@ D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-governanca\Utils.pdb
 D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-startup-resilience\Utils.deps.json
 D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-startup-resilience\Utils.dll
 D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-startup-resilience\Utils.pdb
+D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-enum-label\Utils.deps.json
+D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-enum-label\Utils.dll
+D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-enum-label\Utils.pdb

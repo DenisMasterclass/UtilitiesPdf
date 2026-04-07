@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using UtilitiesPdf.Api.Models;
 using UtilitiesPdf.Api.Services;
+using Utils.Repositories.Enums;
 
 namespace UtilitiesPdf.Api.Controllers;
 
@@ -20,7 +21,7 @@ public class PropostasController : ControllerBase
     [ProducesResponseType(typeof(ImportacaoPdfResultado), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> ImportarPdfAsync(
-        [FromForm] ImportarPropostaPdfRequest request,
+        [FromForm] ImportarPropostaPdfRequest request, TipoPt tipoPt,
         CancellationToken cancellationToken)
     {
         if (!ModelState.IsValid || request.Arquivo is null)
@@ -28,7 +29,7 @@ public class PropostasController : ControllerBase
             return BadRequest(ModelState);
         }
 
-        var resultado = await _pdfImportService.ProcessarArquivoAsync(request.Arquivo, cancellationToken);
+        var resultado = await _pdfImportService.ProcessarArquivoAsync(request.Arquivo, tipoPt, cancellationToken);
 
         return resultado.Sucesso ? Ok(resultado) : BadRequest(resultado);
     }
@@ -38,7 +39,7 @@ public class PropostasController : ControllerBase
     [ProducesResponseType(typeof(ImportacaoPdfLoteResultado), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> ImportarPdfsAsync(
-        [FromForm] ImportarPropostasPdfRequest request,
+        [FromForm] ImportarPropostasPdfRequest request, TipoPt tipoPt,
         CancellationToken cancellationToken)
     {
         if (!ModelState.IsValid || request.Arquivos.Count == 0)
@@ -46,7 +47,7 @@ public class PropostasController : ControllerBase
             return BadRequest(ModelState);
         }
 
-        var resultado = await _pdfImportService.ProcessarArquivosAsync(request.Arquivos, cancellationToken);
+        var resultado = await _pdfImportService.ProcessarArquivosAsync(request.Arquivos, tipoPt, cancellationToken);
         return Ok(resultado);
     }
 
@@ -54,7 +55,7 @@ public class PropostasController : ControllerBase
     [ProducesResponseType(typeof(ImportacaoPdfLoteResultado), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> ImportarPastaAsync(
-        [FromBody] ImportarPropostasPorPastaRequest request,
+        [FromBody] ImportarPropostasPorPastaRequest request, TipoPt tipoPt,
         CancellationToken cancellationToken)
     {
         if (!ModelState.IsValid || string.IsNullOrWhiteSpace(request.CaminhoPasta))
@@ -62,7 +63,7 @@ public class PropostasController : ControllerBase
             return BadRequest(ModelState);
         }
 
-        var resultado = await _pdfImportService.ProcessarPastaAsync(request.CaminhoPasta, cancellationToken);
+        var resultado = await _pdfImportService.ProcessarPastaAsync(request.CaminhoPasta, tipoPt, cancellationToken);
         return Ok(resultado);
     }
 }

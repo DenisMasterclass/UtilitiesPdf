@@ -57,7 +57,8 @@ INSERT INTO dbo.TipoProposta
     Programacao,
     Etl,
     Arquitetura,
-    EspecificacaoExecucaoTestes
+    EspecificacaoExecucaoTestes,
+    IdProposta
 )
 VALUES
 (
@@ -69,7 +70,8 @@ VALUES
     @Programacao,
     @Etl,
     @Arquitetura,
-    @EspecificacaoExecucaoTestes
+    @EspecificacaoExecucaoTestes,
+    @IdProposta
 );";
 
         public const string InsertSqlPacote = @"

@@ -1,4 +1,5 @@
 ﻿using System.Text;
+using Utils.Repositories.Enums;
 
 namespace Utils.Repositories.Entities
 {
@@ -10,7 +11,7 @@ namespace Utils.Repositories.Entities
         public Guid IdProposta { get; set; } = Guid.NewGuid();
         public Guid IdTipoProposta { get; set; } = Guid.Empty;
         public string IdDocusign { get; set; } = string.Empty;
-        public string TipoPt { get; set; } = string.Empty;
+        public TipoPt TipoPt { get; set; } = TipoPt.Alocação;
         public string VersaoProposta { get; set; } = string.Empty;
         public string Vigencia { get; set; } = string.Empty;
         public string Fornecedor { get; set; } = string.Empty;

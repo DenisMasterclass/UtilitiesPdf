@@ -6,4 +6,6 @@ public class ImportacaoResultadoViewModel
     public bool Sucesso { get; set; }
     public int RegistrosAfetados { get; set; }
     public string? Mensagem { get; set; }
+    public int? TipoPt { get; set; }
+    public string TipoPtLabel { get; set; } = string.Empty;
 }
