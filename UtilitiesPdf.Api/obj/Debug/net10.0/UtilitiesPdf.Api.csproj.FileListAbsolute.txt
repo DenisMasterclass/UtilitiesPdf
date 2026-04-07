@@ -123,3 +123,4 @@ D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-enum-label\UtilitiesPdf.Api
 D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-enum-label\UtilitiesPdf.Api.runtimeconfig.json
 D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-enum-label\UtilitiesPdf.Api.dll
 D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-enum-label\UtilitiesPdf.Api.pdb
+D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.Api\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt

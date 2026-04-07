@@ -355,6 +355,13 @@
             "type": "integer",
             "format": "int32"
           },
+          "tipoPt": {
+            "$ref": "#/components/schemas/TipoPt"
+          },
+          "tipoPtLabel": {
+            "type": "string",
+            "nullable": true
+          },
           "resultados": {
             "type": "array",
             "items": {
@@ -380,6 +387,13 @@
             "format": "int32"
           },
           "mensagem": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipoPt": {
+            "$ref": "#/components/schemas/TipoPt"
+          },
+          "tipoPtLabel": {
             "type": "string",
             "nullable": true
           }

@@ -57,91 +57,187 @@ namespace Utils.Repositories
 
         public async Task<PropostaEntity> CamposPropostas(StringBuilder sb, TipoPt tipoPt)
         {
-            PropostaEntity Proposta = new PropostaEntity();
-            PacoteEntity pacote = new PacoteEntity();
-
-            Proposta.IdProposta = Guid.NewGuid();
-            Proposta.IdDocusign = ExtrairValor(sb.ToString(), "Docusign Envelope ID:", "lado");
-            Proposta.TipoPt = tipoPt;
-            Proposta.VersaoProposta = ExtrairValor(sb.ToString(), "Vigência Atualização Publicação Versão", "abaixo");
-            Proposta.Vigencia = ExtrairBloco(sb.ToString(), "GESTAO_FORNEC_103", "GESTÃO DE FORNECEDORES DE TI");
-            Proposta.Fornecedor = ExtrairValor(sb.ToString(), "FORNECEDOR:", "abaixo");
-            Proposta.Preposto = ExtrairValor(sb.ToString(), "Preposto responsável:", "acima");
-            Proposta.EmailPreposto = ExtrairValor(sb.ToString(), "E-mail:", "acima");
-            Proposta.NumeroProposta = ExtrairValor(sb.ToString(), "NRO DA PROPOSTA TÉCNICA:", "acima");
-            Proposta.NumeroPropostaComercial = ExtrairValor(sb.ToString(), "NRO DA PROPOSTA COMERCIAL:", "acima");
-            Proposta.HorasTotais = decimal.TryParse(ExtrairValor(sb.ToString(), "TOTAL DE HORAS:", "lado"), out decimal horasTotais) ? horasTotais : 0;
-            Proposta.LocalTrabalho = ExtrairValor(sb.ToString(), "LOCAL DE TRABALHO:", "acima");
-            Proposta.Premissas = ExtrairBloco(sb.ToString(), "RESTRIÇÕES", "Nome");
-            Proposta.DentroEscopo = ExtrairBloco(sb.ToString(), "DENTRO DO ESCOPO", "FORA DO ESCOPO");
-            Proposta.ForaEscopo = ExtrairBloco(sb.ToString(), "FORA DO ESCOPO", "Nome");
-            Proposta.DocumentoComplementar = ExtrairValor(sb.ToString(), "x", "acima");
-            Proposta.DocumentoComplementar = ExtrairValor(sb.ToString(), "Existe documento complementar anexado nesta proposta?", "acima");
-
-
-            string blocoPacotes = ExtrairBloco(sb.ToString(), "Arquitetura ", "TOTAL DE HORAS:");
-            var linhas = blocoPacotes.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
-            var registros = new List<PacoteEntity>();
-
-            for (int i = 0; i < linhas.Length; i++)
+            if (tipoPt == TipoPt.Projeto)
             {
-                try
+
+                PropostaEntity Proposta = new PropostaEntity();
+                PacoteEntity pacote = new PacoteEntity();
+
+                Proposta.IdProposta = Guid.NewGuid();
+                Proposta.IdDocusign = ExtrairValor(sb.ToString(), "Docusign Envelope ID:", "lado");
+                Proposta.TipoPt = tipoPt;
+                Proposta.VersaoProposta = ExtrairValor(sb.ToString(), "Vigência Atualização Publicação Versão", "abaixo");
+                Proposta.Vigencia = ExtrairBloco(sb.ToString(), "GESTAO_FORNEC_103", "GESTÃO DE FORNECEDORES DE TI");
+                Proposta.Fornecedor = ExtrairValor(sb.ToString(), "FORNECEDOR:", "abaixo");
+                Proposta.Preposto = ExtrairValor(sb.ToString(), "Preposto responsável:", "acima");
+                Proposta.EmailPreposto = ExtrairValor(sb.ToString(), "E-mail:", "acima");
+                Proposta.NumeroProposta = ExtrairValor(sb.ToString(), "NRO DA PROPOSTA TÉCNICA:", "acima");
+                Proposta.NumeroPropostaComercial = ExtrairValor(sb.ToString(), "NRO DA PROPOSTA COMERCIAL:", "acima");
+                Proposta.HorasTotais = decimal.TryParse(ExtrairValor(sb.ToString(), "TOTAL DE HORAS:", "lado"), out decimal horasTotais) ? horasTotais : 0;
+                Proposta.LocalTrabalho = ExtrairValor(sb.ToString(), "LOCAL DE TRABALHO:", "acima");
+                Proposta.Premissas = ExtrairBloco(sb.ToString(), "RESTRIÇÕES", "Nome");
+                Proposta.DentroEscopo = ExtrairBloco(sb.ToString(), "DENTRO DO ESCOPO", "FORA DO ESCOPO");
+                Proposta.ForaEscopo = ExtrairBloco(sb.ToString(), "FORA DO ESCOPO", "Nome");
+                Proposta.DocumentoComplementar = ExtrairValor(sb.ToString(), "x", "acima");
+                Proposta.DocumentoComplementar = ExtrairValor(sb.ToString(), "Existe documento complementar anexado nesta proposta?", "acima");
+
+
+                string blocoPacotes = ExtrairBloco(sb.ToString(), "Arquitetura ", "TOTAL DE HORAS:");
+                var linhas = blocoPacotes.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+                var registros = new List<PacoteEntity>();
+
+                for (int i = 0; i < linhas.Length; i++)
                 {
-                    if (linhas[i].StartsWith("PACOTE"))
+                    try
                     {
-                        string pacoteLine = linhas[i];
-                        string perfilLine = linhas[i + 2];
-
-                        var match = Regex.Match(pacoteLine, @"PACOTE\s+(.*?)\s+QTD HORAS\s+(.*?)\s+DT INICIO\s+(.*?)\s+DT FIM\s+(.*)");
-
-                        var registro = new PacoteEntity
+                        if (linhas[i].StartsWith("PACOTE"))
                         {
-                            IdPacote = Guid.NewGuid(),
-                            IdProposta = Proposta.IdProposta,
-                            Pacote = match.Success ? match.Groups[1].Value.Trim() : "",
-                            Horas = match.Success ? match.Groups[2].Value.Trim() : "",
-                            DataIni = match.Success ? match.Groups[3].Value.Trim() : "",
-                            DataFim = match.Success ? match.Groups[4].Value.Trim() : "",
-                            Perfil = perfilLine.Trim()
-                        };
+                            string pacoteLine = linhas[i];
+                            string perfilLine = linhas[i + 2];
 
-                        registros.Add(registro);
+                            var match = Regex.Match(pacoteLine, @"PACOTE\s+(.*?)\s+QTD HORAS\s+(.*?)\s+DT INICIO\s+(.*?)\s+DT FIM\s+(.*)");
+
+                            var registro = new PacoteEntity
+                            {
+                                IdPacote = Guid.NewGuid(),
+                                IdProposta = Proposta.IdProposta,
+                                Pacote = match.Success ? match.Groups[1].Value.Trim() : "",
+                                Horas = match.Success ? match.Groups[2].Value.Trim() : "",
+                                DataIni = match.Success ? match.Groups[3].Value.Trim() : "",
+                                DataFim = match.Success ? match.Groups[4].Value.Trim() : "",
+                                Perfil = perfilLine.Trim()
+                            };
+
+                            registros.Add(registro);
+                        }
+                    }
+                    catch
+                    {
                     }
                 }
-                catch
+                Proposta.Pacotes = registros;
+
+                string blocoTipoProposta = ExtrairBloco(sb.ToString(), "TIPO DE Proposta:", "PACOTE");
+                StringBuilder tipoProposta = new(blocoTipoProposta.Replace("[", "").Replace("]", "|").Replace(" ", "").Replace("\r\n", "").Replace("\n", "").Replace("|", Environment.NewLine + "|"));
+
+                string[] linhasP = tipoProposta.ToString().Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
+
+                for (int i = 0; i < linhasP.Length; i++)
                 {
+                    if (linhasP[i].Contains("X"))
+                    {
+                        linhasP[i] = linhasP[i].Replace("X", "X" + (i + 1));
+                    }
                 }
+                tipoProposta.Clear();
+                tipoProposta.Append(string.Join(Environment.NewLine, linhasP));
+
+                if (tipoProposta.ToString().Contains("X2")) Proposta.TipoProposta.Analise = true;
+                if (tipoProposta.ToString().Contains("X3")) Proposta.TipoProposta.Requisitos = true;
+                if (tipoProposta.ToString().Contains("X4")) Proposta.TipoProposta.Testes = true;
+                if (tipoProposta.ToString().Contains("X5")) Proposta.TipoProposta.Programacao = true;
+                if (tipoProposta.ToString().Contains("X6")) Proposta.TipoProposta.AnaliseProgramacao = true;
+                if (tipoProposta.ToString().Contains("X7")) Proposta.TipoProposta.Etl = true;
+                if (tipoProposta.ToString().Contains("X8")) Proposta.TipoProposta.Arquitetura = true;
+                if (tipoProposta.ToString().Contains("X9")) Proposta.TipoProposta.EspecificacaoExecucaoTestes = true;
+
+
+                Proposta.Aceite = new StringBuilder(ExtrairBloco(sb.ToString(), "Termo de aceite:", "O uso deste modelo para ALOCAÇÃO É PROIBIDO"));
+                return Proposta;
             }
-            Proposta.Pacotes = registros;
-
-            string blocoTipoProposta = ExtrairBloco(sb.ToString(), "TIPO DE Proposta:", "PACOTE");
-            StringBuilder tipoProposta = new(blocoTipoProposta.Replace("[", "").Replace("]", "|").Replace(" ", "").Replace("\r\n", "").Replace("\n", "").Replace("|", Environment.NewLine + "|"));
-
-            string[] linhasP = tipoProposta.ToString().Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
-
-            for (int i = 0; i < linhasP.Length; i++)
+            else if (tipoPt == TipoPt.Alocação)
             {
-                if (linhasP[i].Contains("X"))
+                PropostaEntity Proposta = new PropostaEntity();
+                PacoteEntity pacote = new PacoteEntity();
+
+                Proposta.IdProposta = Guid.NewGuid();
+                Proposta.IdDocusign = ExtrairValor(sb.ToString(), "Docusign Envelope ID:", "lado");
+                Proposta.TipoPt = tipoPt;
+                Proposta.VersaoProposta = ExtrairValor(sb.ToString(), "Vigência Atualização Publicação Versão", "abaixo");
+                Proposta.Vigencia = ExtrairBloco(sb.ToString(), "GESTAO_FORNEC_101", "GESTÃO DE FORNECEDORES DE TI");
+                Proposta.Fornecedor = ExtrairValor(sb.ToString(), "FORNECEDOR:", "lado");
+                Proposta.Preposto = ExtrairValor(sb.ToString(), "Preposto responsável:", "abaixo");
+                Proposta.EmailPreposto = ExtrairValor(sb.ToString(), "E-mail:", "acima");
+                Proposta.NumeroProposta = ExtrairValor(sb.ToString(), "NRO DA PROPOSTA TÉCNICA:", "acima");
+                Proposta.NumeroPropostaComercial = ExtrairValor(sb.ToString(), "NRO DA PROPOSTA COMERCIAL:", "acima");
+                Proposta.GestorContratante = ExtrairValor(sb.ToString(), "Nome do Gestor Porto Contratante:", "abaixo");
+                //Proposta.HorasTotais = decimal.TryParse(ExtrairValor(sb.ToString(), "TOTAL DE HORAS:", "lado"), out decimal horasTotais) ? horasTotais : 0;
+                Proposta.LocalTrabalho = ExtrairValor(sb.ToString(), "LOCAL DE TRABALHO:", "acima");
+                Proposta.Premissas = ExtrairBloco(sb.ToString(), "RESTRIÇÕES", "Nome");
+                Proposta.DentroEscopo = ExtrairBloco(sb.ToString(), "DENTRO DO ESCOPO", "FORA DO ESCOPO");
+                Proposta.ForaEscopo = ExtrairBloco(sb.ToString(), "FORA DO ESCOPO", "Nome");
+                Proposta.DocumentoComplementar = ExtrairValor(sb.ToString(), "x", "acima");
+                Proposta.DocumentoComplementar = ExtrairValor(sb.ToString(), "Existe documento complementar anexado nesta proposta?", "acima");
+
+
+                string blocoPacotes = ExtrairBloco(sb.ToString(), "Arquitetura ", "TOTAL DE HORAS:");
+                var linhas = blocoPacotes.Split(new[] { "\r\n", "\n" }, StringSplitOptions.RemoveEmptyEntries);
+                var registros = new List<PacoteEntity>();
+
+                for (int i = 0; i < linhas.Length; i++)
                 {
-                    linhasP[i] = linhasP[i].Replace("X", "X" + (i + 1));
+                    try
+                    {
+                        if (linhas[i].StartsWith("PACOTE"))
+                        {
+                            string pacoteLine = linhas[i];
+                            string perfilLine = linhas[i + 2];
+
+                            var match = Regex.Match(pacoteLine, @"PACOTE\s+(.*?)\s+QTD HORAS\s+(.*?)\s+DT INICIO\s+(.*?)\s+DT FIM\s+(.*)");
+
+                            var registro = new PacoteEntity
+                            {
+                                IdPacote = Guid.NewGuid(),
+                                IdProposta = Proposta.IdProposta,
+                                Pacote = match.Success ? match.Groups[1].Value.Trim() : "",
+                                Horas = match.Success ? match.Groups[2].Value.Trim() : "",
+                                DataIni = match.Success ? match.Groups[3].Value.Trim() : "",
+                                DataFim = match.Success ? match.Groups[4].Value.Trim() : "",
+                                Perfil = perfilLine.Trim()
+                            };
+
+                            registros.Add(registro);
+                        }
+                    }
+                    catch
+                    {
+                    }
                 }
+                Proposta.Pacotes = registros;
+
+                string blocoTipoProposta = ExtrairBloco(sb.ToString(), "TIPO DE Proposta:", "PACOTE");
+                StringBuilder tipoProposta = new(blocoTipoProposta.Replace("[", "").Replace("]", "|").Replace(" ", "").Replace("\r\n", "").Replace("\n", "").Replace("|", Environment.NewLine + "|"));
+
+                string[] linhasP = tipoProposta.ToString().Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
+
+                for (int i = 0; i < linhasP.Length; i++)
+                {
+                    if (linhasP[i].Contains("X"))
+                    {
+                        linhasP[i] = linhasP[i].Replace("X", "X" + (i + 1));
+                    }
+                }
+                tipoProposta.Clear();
+                tipoProposta.Append(string.Join(Environment.NewLine, linhasP));
+
+                if (tipoProposta.ToString().Contains("X2")) Proposta.TipoProposta.Analise = true;
+                if (tipoProposta.ToString().Contains("X3")) Proposta.TipoProposta.Requisitos = true;
+                if (tipoProposta.ToString().Contains("X4")) Proposta.TipoProposta.Testes = true;
+                if (tipoProposta.ToString().Contains("X5")) Proposta.TipoProposta.Programacao = true;
+                if (tipoProposta.ToString().Contains("X6")) Proposta.TipoProposta.AnaliseProgramacao = true;
+                if (tipoProposta.ToString().Contains("X7")) Proposta.TipoProposta.Etl = true;
+                if (tipoProposta.ToString().Contains("X8")) Proposta.TipoProposta.Arquitetura = true;
+                if (tipoProposta.ToString().Contains("X9")) Proposta.TipoProposta.EspecificacaoExecucaoTestes = true;
+
+
+                Proposta.Aceite = new StringBuilder(ExtrairBloco(sb.ToString(), "Termo de aceite:", "O uso deste modelo para ALOCAÇÃO É PROIBIDO"));
+                return Proposta;
             }
-            tipoProposta.Clear();
-            tipoProposta.Append(string.Join(Environment.NewLine, linhasP));
+            else
+            {
+                throw new NotImplementedException("A extração de campos para o tipo de proposta especificado ainda não foi implementada.");
+            }
 
-            if (tipoProposta.ToString().Contains("X2")) Proposta.TipoProposta.Analise = true;
-            if (tipoProposta.ToString().Contains("X3")) Proposta.TipoProposta.Requisitos = true;
-            if (tipoProposta.ToString().Contains("X4")) Proposta.TipoProposta.Testes = true;
-            if (tipoProposta.ToString().Contains("X5")) Proposta.TipoProposta.Programacao = true;
-            if (tipoProposta.ToString().Contains("X6")) Proposta.TipoProposta.AnaliseProgramacao = true;
-            if (tipoProposta.ToString().Contains("X7")) Proposta.TipoProposta.Etl = true;
-            if (tipoProposta.ToString().Contains("X8")) Proposta.TipoProposta.Arquitetura = true;
-            if (tipoProposta.ToString().Contains("X9")) Proposta.TipoProposta.EspecificacaoExecucaoTestes = true;
-
-
-            Proposta.Aceite = new StringBuilder(ExtrairBloco(sb.ToString(), "Termo de aceite:", "O uso deste modelo para ALOCAÇÃO É PROIBIDO"));
-
-            return Proposta;
         }
 
         public async Task<int> InserirPropostaAsync(PropostaEntity Proposta)
