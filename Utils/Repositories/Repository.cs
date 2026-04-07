@@ -196,37 +196,21 @@ namespace Utils.Repositories
                     },
                     _context.Transaction);
 
-                registrosAfetados += await _context.Connection.ExecuteAsync(
-                    InsertSqlPropostaTipoProposta,
-                    new
-                    {
-                        IdProposta = idProposta,
-                        IdTipoProposta = idTipoProposta
-                    },
-                    _context.Transaction);
-
                 foreach (var pacote in Proposta.Pacotes)
                 {
                     registrosAfetados += await _context.Connection.ExecuteAsync(
                         InsertSqlPacote,
                         new
                         {
-                            Id = pacote.IdPacote,
-                            IdPacote = ParsePacoteId(pacote.Pacote),
-                            Horas = ParseDecimal(pacote.Horas),
-                            DataIni = ParseDate(pacote.DataIni),
-                            DataFim = ParseDate(pacote.DataFim)
+                            IdPacote = pacote.IdPacote,
+                            IdProposta = Proposta.IdProposta,
+                            Pacote = pacote.Pacote,
+                            Horas = pacote.Horas,
+                            DataIni = pacote.DataIni,
+                            DataFim = pacote.DataFim
                         },
                         _context.Transaction);
 
-                    registrosAfetados += await _context.Connection.ExecuteAsync(
-                        InsertSqlPropostaPacote,
-                        new
-                        {
-                            IdProposta = idProposta,
-                            IdPacote = pacote.IdPacote
-                        },
-                        _context.Transaction);
                 }
 
                 _context.Transaction.Commit();

@@ -72,46 +72,24 @@ VALUES
     @EspecificacaoExecucaoTestes
 );";
 
-        public const string InsertSqlPropostaTipoProposta = @"
-INSERT INTO dbo.PropostaTipoProposta
-(
-    IdProposta,
-    IdTipoProposta
-)
-VALUES
-(
-    @IdProposta,
-    @IdTipoProposta
-);";
-
         public const string InsertSqlPacote = @"
 INSERT INTO dbo.Pacote
 (
-    Id,
     IdPacote,
+    IdProposta,
     Horas,
     DataIni,
     DataFim
 )
 VALUES
 (
-    @Id,
     @IdPacote,
+    @IdProposta,
     @Horas,
     @DataIni,
     @DataFim
 );";
 
-        public const string InsertSqlPropostaPacote = @"
-INSERT INTO dbo.PropostaPacote
-(
-    IdProposta,
-    IdPacote
-)
-VALUES
-(
-    @IdProposta,
-    @IdPacote
-);";
+
     }
 }

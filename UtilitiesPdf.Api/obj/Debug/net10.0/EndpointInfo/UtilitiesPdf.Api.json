@@ -61,10 +61,10 @@
         }
       }
     },
-    "/api/Projetos/importar": {
+    "/api/Propostas/importar": {
       "post": {
         "tags": [
-          "Projetos"
+          "Propostas"
         ],
         "requestBody": {
           "content": {
@@ -133,10 +133,10 @@
         }
       }
     },
-    "/api/Projetos/importar-lote": {
+    "/api/Propostas/importar-lote": {
       "post": {
         "tags": [
-          "Projetos"
+          "Propostas"
         ],
         "requestBody": {
           "content": {
@@ -209,26 +209,26 @@
         }
       }
     },
-    "/api/Projetos/importar-pasta": {
+    "/api/Propostas/importar-pasta": {
       "post": {
         "tags": [
-          "Projetos"
+          "Propostas"
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/ImportarProjetosPorPastaRequest"
+                "$ref": "#/components/schemas/ImportarPropostasPorPastaRequest"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/ImportarProjetosPorPastaRequest"
+                "$ref": "#/components/schemas/ImportarPropostasPorPastaRequest"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/ImportarProjetosPorPastaRequest"
+                "$ref": "#/components/schemas/ImportarPropostasPorPastaRequest"
               }
             }
           }
@@ -359,7 +359,7 @@
         },
         "additionalProperties": false
       },
-      "ImportarProjetosPorPastaRequest": {
+      "ImportarPropostasPorPastaRequest": {
         "required": [
           "caminhoPasta"
         ],
@@ -406,7 +406,7 @@
       "name": "Importacoes"
     },
     {
-      "name": "Projetos"
+      "name": "Propostas"
     }
   ]
 }

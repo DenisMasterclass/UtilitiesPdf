@@ -31,9 +31,9 @@
     ]
   },
   {
-    "ContainingType": "UtilitiesPdf.Api.Controllers.ProjetosController",
+    "ContainingType": "UtilitiesPdf.Api.Controllers.PropostasController",
     "Method": "ImportarPdfAsync",
-    "RelativePath": "api/Projetos/importar",
+    "RelativePath": "api/Propostas/importar",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -66,9 +66,9 @@
     ]
   },
   {
-    "ContainingType": "UtilitiesPdf.Api.Controllers.ProjetosController",
+    "ContainingType": "UtilitiesPdf.Api.Controllers.PropostasController",
     "Method": "ImportarPdfsAsync",
-    "RelativePath": "api/Projetos/importar-lote",
+    "RelativePath": "api/Propostas/importar-lote",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -101,16 +101,16 @@
     ]
   },
   {
-    "ContainingType": "UtilitiesPdf.Api.Controllers.ProjetosController",
+    "ContainingType": "UtilitiesPdf.Api.Controllers.PropostasController",
     "Method": "ImportarPastaAsync",
-    "RelativePath": "api/Projetos/importar-pasta",
+    "RelativePath": "api/Propostas/importar-pasta",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
         "Name": "request",
-        "Type": "UtilitiesPdf.Api.Models.ImportarProjetosPorPastaRequest",
+        "Type": "UtilitiesPdf.Api.Models.ImportarPropostasPorPastaRequest",
         "IsRequired": true
       }
     ],
