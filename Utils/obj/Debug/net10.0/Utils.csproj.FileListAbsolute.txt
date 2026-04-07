@@ -45,3 +45,9 @@ D:\PortoBank\dev\UtilitiesPdf\Utils\obj\Debug\net10.0\ref\Utils.dll
 D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-schemafix\Utils.deps.json
 D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-schemafix\Utils.dll
 D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-schemafix\Utils.pdb
+D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-governanca\Utils.deps.json
+D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-governanca\Utils.dll
+D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-governanca\Utils.pdb
+D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-startup-resilience\Utils.deps.json
+D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-startup-resilience\Utils.dll
+D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-startup-resilience\Utils.pdb

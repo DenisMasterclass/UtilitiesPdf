@@ -2,17 +2,12 @@ namespace Utils.Repositories.Sql
 {
     public static class ConfigurationRepositorySQL
     {
-        public const string SqlDelimaItFinanceiro = @"Server=tcp:delimait.database.windows.net,1433;Initial Catalog=Financeiro;Persist Security Info=False;User ID=access;Password=PortoBank@01;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        public const string SqlDelimaItFinanceiro = @"Server=tcp:delimait01.database.windows.net,1433;Initial Catalog=Governanca;Persist Security Info=False;User ID=denis;Password=Melzinh@01;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
 
-        public const string InsertSqlPropostasPropostaTecnica = @"SELECT COD_PARAMETRO AS Id,
-                                                    NOM_PARAMETRO AS Name
-                                                    FROM CONFIGURACAO_PARAMETRO P WITH(NOLOCK)
-                                                    WHERE P.COD_MODULO = @ModuleId";
-
-        public const string InsertSqlProjeto = @"
-INSERT INTO dbo.Projeto
+        public const string InsertSqlProposta = @"
+INSERT INTO dbo.Proposta
 (
-    IdProjeto,
+    IdProposta,
     IdDocusign,
     TipoProposta,
     VersaoProposta,
@@ -32,7 +27,7 @@ INSERT INTO dbo.Projeto
 )
 VALUES
 (
-    @IdProjeto,
+    @IdProposta,
     @IdDocusign,
     @TipoProposta,
     @VersaoProposta,
@@ -51,10 +46,10 @@ VALUES
     @Aceite
 );";
 
-        public const string InsertSqlTipoProjeto = @"
-INSERT INTO dbo.TipoProjeto
+        public const string InsertSqlTipoProposta = @"
+INSERT INTO dbo.TipoProposta
 (
-    Id,
+    IdTipoProposta,
     Analise,
     Requisitos,
     AnaliseProgramacao,
@@ -77,16 +72,16 @@ VALUES
     @EspecificacaoExecucaoTestes
 );";
 
-        public const string InsertSqlProjetoTipoProjeto = @"
-INSERT INTO dbo.ProjetoTipoProjeto
+        public const string InsertSqlPropostaTipoProposta = @"
+INSERT INTO dbo.PropostaTipoProposta
 (
-    IdProjeto,
-    IdTipoProjeto
+    IdProposta,
+    IdTipoProposta
 )
 VALUES
 (
-    @IdProjeto,
-    @IdTipoProjeto
+    @IdProposta,
+    @IdTipoProposta
 );";
 
         public const string InsertSqlPacote = @"
@@ -107,15 +102,15 @@ VALUES
     @DataFim
 );";
 
-        public const string InsertSqlProjetoPacote = @"
-INSERT INTO dbo.ProjetoPacote
+        public const string InsertSqlPropostaPacote = @"
+INSERT INTO dbo.PropostaPacote
 (
-    IdProjeto,
+    IdProposta,
     IdPacote
 )
 VALUES
 (
-    @IdProjeto,
+    @IdProposta,
     @IdPacote
 );";
     }

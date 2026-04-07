@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("UtilitiesPdf.Api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cf8f97172afc09000c9a9af01d75ce051c3ff695")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+64ec4ef67bfe2d5c9f9364983878e17bc569503b")]
 [assembly: System.Reflection.AssemblyProductAttribute("UtilitiesPdf.Api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("UtilitiesPdf.Api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

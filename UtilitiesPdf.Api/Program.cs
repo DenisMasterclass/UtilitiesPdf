@@ -23,8 +23,17 @@ var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
 {
+    var logger = scope.ServiceProvider.GetRequiredService<ILoggerFactory>().CreateLogger("Startup");
     var historicoService = scope.ServiceProvider.GetRequiredService<IImportacaoHistoricoService>();
-    await historicoService.InicializarAsync(CancellationToken.None);
+
+    try
+    {
+        await historicoService.InicializarAsync(CancellationToken.None);
+    }
+    catch (Exception ex)
+    {
+        logger.LogWarning(ex, "Nao foi possivel inicializar o historico de importacao no startup. A API sera iniciada e uma nova tentativa ocorrera durante o uso.");
+    }
 }
 
 app.UseSwagger();

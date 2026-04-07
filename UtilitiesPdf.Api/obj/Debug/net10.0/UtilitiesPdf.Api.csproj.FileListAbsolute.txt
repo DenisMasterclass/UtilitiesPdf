@@ -105,3 +105,15 @@ D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-schemafix\UtilitiesPdf.Api.
 D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-schemafix\UtilitiesPdf.Api.runtimeconfig.json
 D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-schemafix\UtilitiesPdf.Api.dll
 D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-schemafix\UtilitiesPdf.Api.pdb
+D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-governanca\appsettings.json
+D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-governanca\UtilitiesPdf.Api.staticwebassets.endpoints.json
+D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-governanca\UtilitiesPdf.Api.deps.json
+D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-governanca\UtilitiesPdf.Api.runtimeconfig.json
+D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-governanca\UtilitiesPdf.Api.dll
+D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-governanca\UtilitiesPdf.Api.pdb
+D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-startup-resilience\appsettings.json
+D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-startup-resilience\UtilitiesPdf.Api.staticwebassets.endpoints.json
+D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-startup-resilience\UtilitiesPdf.Api.deps.json
+D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-startup-resilience\UtilitiesPdf.Api.runtimeconfig.json
+D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-startup-resilience\UtilitiesPdf.Api.dll
+D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-startup-resilience\UtilitiesPdf.Api.pdb

@@ -1,0 +1,66 @@
+DataUtc: 2026-04-07T12:21:40.5064969Z
+Arquivo: Template_PropostaTecnica_SobDemanda_PROJETOS_V02C01.docx (2).pdf
+Erro: Invalid column name 'Id'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'Id'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteNonQuery(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteNonQueryAsync>b__193_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at Utils.Repositories.Repository.InserirPropostaAsync(PropostaEntity Proposta) in D:\PortoBank\dev\UtilitiesPdf\Utils\Repositories\Repository.cs:line 183
+   at UtilitiesPdf.Api.Services.PdfImportService.ProcessarArquivoDoDiscoAsync(String caminhoArquivo, String nomeArquivo, String origem, CancellationToken cancellationToken) in D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.Api\Services\PdfImportService.cs:line 126
+ClientConnectionId:caa3406c-b97f-4e20-8079-dd1e5ac6cc1e
+Error Number:207,State:1,Class:16
+--------------------------------------------------------------------------------
+DataUtc: 2026-04-07T12:27:44.0164086Z
+Arquivo: Template_PropostaTecnica_SobDemanda_PROJETOS_V02C01.docx (2).pdf
+Erro: Invalid column name 'Id'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid column name 'Id'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteNonQuery(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteNonQueryAsync>b__193_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at Utils.Repositories.Repository.InserirPropostaAsync(PropostaEntity Proposta) in D:\PortoBank\dev\UtilitiesPdf\Utils\Repositories\Repository.cs:line 183
+   at UtilitiesPdf.Api.Services.PdfImportService.ProcessarArquivoDoDiscoAsync(String caminhoArquivo, String nomeArquivo, String origem, CancellationToken cancellationToken) in D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.Api\Services\PdfImportService.cs:line 126
+ClientConnectionId:caa3406c-b97f-4e20-8079-dd1e5ac6cc1e
+Error Number:207,State:1,Class:16
+--------------------------------------------------------------------------------
+DataUtc: 2026-04-07T12:30:55.3212781Z
+Arquivo: Template_PropostaTecnica_SobDemanda_PROJETOS_V02C01.docx (2).pdf
+Erro: Invalid object name 'dbo.PropostaTipoProposta'.
+Microsoft.Data.SqlClient.SqlException (0x80131904): Invalid object name 'dbo.PropostaTipoProposta'.
+   at Microsoft.Data.SqlClient.SqlConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.SqlInternalConnection.OnError(SqlException exception, Boolean breakConnection, Action`1 wrapCloseInAction)
+   at Microsoft.Data.SqlClient.TdsParser.ThrowExceptionAndWarning(TdsParserStateObject stateObj, SqlCommand command, Boolean callerHasConnectionLock, Boolean asyncClose)
+   at Microsoft.Data.SqlClient.TdsParser.TryRun(RunBehavior runBehavior, SqlCommand cmdHandler, SqlDataReader dataStream, BulkCopySimpleResultSet bulkCopyHandler, TdsParserStateObject stateObj, Boolean& dataReady)
+   at Microsoft.Data.SqlClient.SqlCommand.FinishExecuteReader(SqlDataReader ds, RunBehavior runBehavior, String resetOptionsString, Boolean isInternal, Boolean forDescribeParameterEncryption, Boolean shouldCacheForAlwaysEncrypted)
+   at Microsoft.Data.SqlClient.SqlCommand.CompleteAsyncExecuteReader(Boolean isInternal, Boolean forDescribeParameterEncryption)
+   at Microsoft.Data.SqlClient.SqlCommand.InternalEndExecuteNonQuery(IAsyncResult asyncResult, Boolean isInternal, String endMethod)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryInternal(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.EndExecuteNonQueryAsync(IAsyncResult asyncResult)
+   at Microsoft.Data.SqlClient.SqlCommand.<>c.<InternalExecuteNonQueryAsync>b__193_1(IAsyncResult asyncResult)
+   at System.Threading.Tasks.TaskFactory`1.FromAsyncCoreLogic(IAsyncResult iar, Func`2 endFunction, Action`1 endAction, Task`1 promise, Boolean requiresSynchronization)
+--- End of stack trace from previous location ---
+   at Dapper.SqlMapper.ExecuteImplAsync(IDbConnection cnn, CommandDefinition command, Object param) in /_/Dapper/SqlMapper.Async.cs:line 662
+   at Utils.Repositories.Repository.InserirPropostaAsync(PropostaEntity Proposta) in D:\PortoBank\dev\UtilitiesPdf\Utils\Repositories\Repository.cs:line 199
+   at UtilitiesPdf.Api.Services.PdfImportService.ProcessarArquivoDoDiscoAsync(String caminhoArquivo, String nomeArquivo, String origem, CancellationToken cancellationToken) in D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.Api\Services\PdfImportService.cs:line 126
+ClientConnectionId:69e4347f-e662-420c-9b19-e082ec8e6b04
+Error Number:208,State:1,Class:16
+--------------------------------------------------------------------------------

@@ -152,15 +152,15 @@ namespace Utils.Repositories
 
             try
             {
-                var idProjeto = Proposta.IdProposta;
-                var idTipoProjeto = Proposta.TipoProposta.IdTipoProposta;
+                var idProposta = Proposta.IdProposta;
+                var idTipoProposta = Proposta.TipoProposta.IdTipoProposta;
                 var registrosAfetados = 0;
 
                 registrosAfetados += await _context.Connection.ExecuteAsync(
-                    InsertSqlProjeto,
+                    InsertSqlProposta,
                     new
                     {
-                        IdProjeto = idProjeto,
+                        IdProposta = idProposta,
                         Proposta.IdDocusign,
                         TipoProposta = Proposta.TipoPt,
                         Proposta.VersaoProposta,
@@ -181,10 +181,10 @@ namespace Utils.Repositories
                     _context.Transaction);
 
                 registrosAfetados += await _context.Connection.ExecuteAsync(
-                    InsertSqlTipoProjeto,
+                    InsertSqlTipoProposta,
                     new
                     {
-                        Id = idTipoProjeto,
+                        Id = idTipoProposta,
                         Proposta.TipoProposta.Analise,
                         Proposta.TipoProposta.Requisitos,
                         Proposta.TipoProposta.AnaliseProgramacao,
@@ -197,11 +197,11 @@ namespace Utils.Repositories
                     _context.Transaction);
 
                 registrosAfetados += await _context.Connection.ExecuteAsync(
-                    InsertSqlProjetoTipoProjeto,
+                    InsertSqlPropostaTipoProposta,
                     new
                     {
-                        IdProjeto = idProjeto,
-                        IdTipoProjeto = idTipoProjeto
+                        IdProposta = idProposta,
+                        IdTipoProposta = idTipoProposta
                     },
                     _context.Transaction);
 
@@ -220,10 +220,10 @@ namespace Utils.Repositories
                         _context.Transaction);
 
                     registrosAfetados += await _context.Connection.ExecuteAsync(
-                        InsertSqlProjetoPacote,
+                        InsertSqlPropostaPacote,
                         new
                         {
-                            IdProjeto = idProjeto,
+                            IdProposta = idProposta,
                             IdPacote = pacote.IdPacote
                         },
                         _context.Transaction);
@@ -309,3 +309,4 @@ namespace Utils.Repositories
         }
     }
 }
+

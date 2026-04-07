@@ -168,10 +168,16 @@ D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.FollowUp\obj\Debug\net10.0\staticweba
 D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.FollowUp\obj\Debug\net10.0\staticwebassets.development.json
 D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.FollowUp\obj\Debug\net10.0\staticwebassets.build.endpoints.json
 D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.FollowUp\obj\Debug\net10.0\swae.build.ex.cache
-D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.FollowUp\obj\Debug\net10.0\staticwebassets.upToDateCheck.txt
 D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.FollowUp\obj\Debug\net10.0\Utilitie.FD5F1F9B.Up2Date
 D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.FollowUp\obj\Debug\net10.0\UtilitiesPdf.FollowUp.dll
 D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.FollowUp\obj\Debug\net10.0\refint\UtilitiesPdf.FollowUp.dll
 D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.FollowUp\obj\Debug\net10.0\UtilitiesPdf.FollowUp.pdb
 D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.FollowUp\obj\Debug\net10.0\UtilitiesPdf.FollowUp.genruntimeconfig.cache
 D:\PortoBank\dev\UtilitiesPdf\UtilitiesPdf.FollowUp\obj\Debug\net10.0\ref\UtilitiesPdf.FollowUp.dll
+D:\PortoBank\dev\UtilitiesPdf\artifacts\followup-validate-governanca\appsettings.json
+D:\PortoBank\dev\UtilitiesPdf\artifacts\followup-validate-governanca\UtilitiesPdf.FollowUp.staticwebassets.runtime.json
+D:\PortoBank\dev\UtilitiesPdf\artifacts\followup-validate-governanca\UtilitiesPdf.FollowUp.staticwebassets.endpoints.json
+D:\PortoBank\dev\UtilitiesPdf\artifacts\followup-validate-governanca\UtilitiesPdf.FollowUp.deps.json
+D:\PortoBank\dev\UtilitiesPdf\artifacts\followup-validate-governanca\UtilitiesPdf.FollowUp.runtimeconfig.json
+D:\PortoBank\dev\UtilitiesPdf\artifacts\followup-validate-governanca\UtilitiesPdf.FollowUp.dll
+D:\PortoBank\dev\UtilitiesPdf\artifacts\followup-validate-governanca\UtilitiesPdf.FollowUp.pdb
