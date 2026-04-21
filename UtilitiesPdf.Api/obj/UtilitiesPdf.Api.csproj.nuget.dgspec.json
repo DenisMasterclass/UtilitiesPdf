@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\PortoBank\\dev\\UtilitiesPdf\\UtilitiesPdf.Api\\UtilitiesPdf.Api.csproj": {}
+    "C:\\dev\\UtilitiesPdf\\UtilitiesPdf.Api\\UtilitiesPdf.Api.csproj": {}
   },
   "projects": {
-    "D:\\PortoBank\\dev\\UtilitiesPdf\\UtilitiesPdf.Api\\UtilitiesPdf.Api.csproj": {
+    "C:\\dev\\UtilitiesPdf\\UtilitiesPdf.Api\\UtilitiesPdf.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PortoBank\\dev\\UtilitiesPdf\\UtilitiesPdf.Api\\UtilitiesPdf.Api.csproj",
+        "projectUniqueName": "C:\\dev\\UtilitiesPdf\\UtilitiesPdf.Api\\UtilitiesPdf.Api.csproj",
         "projectName": "UtilitiesPdf.Api",
-        "projectPath": "D:\\PortoBank\\dev\\UtilitiesPdf\\UtilitiesPdf.Api\\UtilitiesPdf.Api.csproj",
-        "packagesPath": "C:\\Users\\popne\\.nuget\\packages\\",
-        "outputPath": "D:\\PortoBank\\dev\\UtilitiesPdf\\UtilitiesPdf.Api\\obj\\",
+        "projectPath": "C:\\dev\\UtilitiesPdf\\UtilitiesPdf.Api\\UtilitiesPdf.Api.csproj",
+        "packagesPath": "C:\\Users\\DenisLima\\.nuget\\packages\\",
+        "outputPath": "C:\\dev\\UtilitiesPdf\\UtilitiesPdf.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "D:\\PortoBank\\dev\\UtilitiesPdf\\NuGet.Config",
-          "C:\\Users\\popne\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\dev\\UtilitiesPdf\\NuGet.Config",
+          "C:\\Users\\DenisLima\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -31,10 +31,11 @@
         },
         "frameworks": {
           "net10.0": {
+            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {
-              "D:\\PortoBank\\dev\\UtilitiesPdf\\Utils\\Utils.csproj": {
-                "projectPath": "D:\\PortoBank\\dev\\UtilitiesPdf\\Utils\\Utils.csproj"
+              "C:\\dev\\UtilitiesPdf\\Utils\\Utils.csproj": {
+                "projectPath": "C:\\dev\\UtilitiesPdf\\Utils\\Utils.csproj"
               }
             }
           }
@@ -49,10 +50,11 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "dependencies": {
             "Microsoft.AspNetCore.OpenApi": {
@@ -83,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.202/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
@@ -501,21 +503,21 @@
         }
       }
     },
-    "D:\\PortoBank\\dev\\UtilitiesPdf\\Utils\\Utils.csproj": {
+    "C:\\dev\\UtilitiesPdf\\Utils\\Utils.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PortoBank\\dev\\UtilitiesPdf\\Utils\\Utils.csproj",
+        "projectUniqueName": "C:\\dev\\UtilitiesPdf\\Utils\\Utils.csproj",
         "projectName": "Utils",
-        "projectPath": "D:\\PortoBank\\dev\\UtilitiesPdf\\Utils\\Utils.csproj",
-        "packagesPath": "C:\\Users\\popne\\.nuget\\packages\\",
-        "outputPath": "D:\\PortoBank\\dev\\UtilitiesPdf\\Utils\\obj\\",
+        "projectPath": "C:\\dev\\UtilitiesPdf\\Utils\\Utils.csproj",
+        "packagesPath": "C:\\Users\\DenisLima\\.nuget\\packages\\",
+        "outputPath": "C:\\dev\\UtilitiesPdf\\Utils\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "D:\\PortoBank\\dev\\UtilitiesPdf\\NuGet.Config",
-          "C:\\Users\\popne\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\dev\\UtilitiesPdf\\NuGet.Config",
+          "C:\\Users\\DenisLima\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -528,6 +530,7 @@
         },
         "frameworks": {
           "net10.0": {
+            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {}
           }
@@ -542,10 +545,11 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "dependencies": {
             "Dapper": {
@@ -581,7 +585,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.202/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",

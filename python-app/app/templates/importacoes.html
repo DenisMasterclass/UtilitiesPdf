@@ -1,0 +1,83 @@
+{% extends "base.html" %}
+{% block title %}Executar Importacoes{% endblock %}
+{% block content %}
+<section class="hero compact">
+    <div>
+        <p class="eyebrow">Execucao</p>
+        <h1>Acione os 3 endpoints de importacao</h1>
+        <p class="hero-copy">Use esta tela para processar um unico PDF, uma lista de PDFs ou todos os PDFs de uma pasta.</p>
+    </div>
+</section>
+
+<section id="global-error" class="alert hidden"></section>
+<section id="global-success" class="status success-banner hidden"></section>
+
+<section class="filters import-type-filter">
+    <div class="field">
+        <label for="tipoPt">Tipo da proposta</label>
+        <select id="tipoPt">
+            <option value="1">Projeto</option>
+            <option value="2">Alocacao</option>
+        </select>
+    </div>
+</section>
+
+<section class="execution-grid">
+    <article class="panel">
+        <h2>Arquivo unico</h2>
+        <p>Seleciona um PDF e envia para o endpoint <code>importar</code>.</p>
+        <input id="arquivo-unico" type="file" accept=".pdf">
+        <span id="arquivo-unico-helper" class="helper"></span>
+        <button id="btn-arquivo-unico" class="primary">Importar arquivo</button>
+        <div class="progress-block">
+            <div class="progress-meta">
+                <span id="status-unico">Aguardando execucao</span>
+                <span id="percentual-unico">0%</span>
+            </div>
+            <div class="progress-track">
+                <div id="barra-unico" class="progress-fill" style="width:0%"></div>
+            </div>
+        </div>
+        <div id="resultado-unico" class="result-box hidden"></div>
+    </article>
+
+    <article class="panel">
+        <h2>Lote de arquivos</h2>
+        <p>Seleciona varios PDFs e envia para o endpoint <code>importar-lote</code>.</p>
+        <input id="arquivos-lote" type="file" accept=".pdf" multiple>
+        <span id="lote-helper" class="helper"></span>
+        <button id="btn-lote" class="primary">Importar lote</button>
+        <div class="progress-block">
+            <div class="progress-meta">
+                <span id="status-lote">Aguardando execucao</span>
+                <span id="percentual-lote">0%</span>
+            </div>
+            <div class="progress-track">
+                <div id="barra-lote" class="progress-fill" style="width:0%"></div>
+            </div>
+        </div>
+        <span id="lote-atual" class="helper"></span>
+        <div id="resultado-lote" class="batch-summary hidden"></div>
+    </article>
+
+    <article class="panel">
+        <h2>Pasta local</h2>
+        <p>Informa um caminho de pasta para executar o endpoint <code>importar-pasta</code>.</p>
+        <input id="caminho-pasta" placeholder="D:\PortoBank\Proposta Tecnica\Propostas">
+        <button id="btn-pasta" class="primary">Importar pasta</button>
+        <div class="progress-block">
+            <div class="progress-meta">
+                <span id="status-pasta">Aguardando execucao</span>
+                <span id="percentual-pasta">0%</span>
+            </div>
+            <div class="progress-track">
+                <div id="barra-pasta" class="progress-fill" style="width:0%"></div>
+            </div>
+        </div>
+        <div id="resultado-pasta" class="batch-summary hidden"></div>
+    </article>
+</section>
+{% endblock %}
+{% block scripts %}
+<script src="/static/importacoes.js"></script>
+{% endblock %}

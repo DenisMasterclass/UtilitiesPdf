@@ -1,0 +1,10 @@
+INFO:     127.0.0.1:64356 - "GET /importacoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:64354 - "GET /api/importacoes/historico HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56422 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56422 - "GET /static/app.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56422 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+INFO:     127.0.0.1:56422 - "GET /follow-up HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56422 - "GET /static/followup.js HTTP/1.1" 200 OK
+INFO:     127.0.0.1:56422 - "GET /api/importacoes/historico?dataInicial=2026-04-21&dataFinal=2026-04-21 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62264 - "GET /api/importacoes/historico?dataInicial=2025-12-28&dataFinal=2026-04-21 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:62264 - "GET /api/importacoes/historico?dataInicial=2025-12-28&dataFinal=2026-04-21 HTTP/1.1" 200 OK

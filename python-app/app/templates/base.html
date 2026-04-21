@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}UtilitiesPdf{% endblock %}</title>
+    <link rel="stylesheet" href="/static/app.css">
+</head>
+<body>
+    <div class="shell">
+        <header class="topbar">
+            <div class="brand-wrap">
+                <div>
+                    <p class="eyebrow">UtilitiesPdf</p>
+                    <h1>Portal de Importacao</h1>
+                </div>
+                <nav class="main-nav">
+                    <a class="{{ 'active' if active_page == 'home' else '' }}" href="/">Inicio</a>
+                    <a class="{{ 'active' if active_page == 'importacoes' else '' }}" href="/importacoes">Executar importacoes</a>
+                    <a class="{{ 'active' if active_page == 'followup' else '' }}" href="/follow-up">Follow-up</a>
+                </nav>
+            </div>
+        </header>
+        <main class="content">
+            {% block content %}{% endblock %}
+        </main>
+    </div>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

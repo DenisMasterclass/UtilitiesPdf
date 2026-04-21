@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% block title %}Follow-up de Importacoes{% endblock %}
+{% block content %}
+<section class="filters filters-followup">
+    <div class="field">
+        <label for="dataInicial">Data inicial</label>
+        <input id="dataInicial" type="date">
+    </div>
+    <div class="field">
+        <label for="dataFinal">Data final</label>
+        <input id="dataFinal" type="date">
+    </div>
+    <div class="field">
+        <label for="statusFiltro">Status</label>
+        <select id="statusFiltro">
+            <option value="Todos">Todos</option>
+            <option value="Sucesso">Sucesso</option>
+            <option value="Falha">Falha</option>
+        </select>
+    </div>
+    <div class="actions">
+        <button id="btn-filtrar" class="primary">Filtrar</button>
+        <button id="btn-limpar" class="secondary">Limpar</button>
+        <button id="btn-exportar" class="secondary">Exportar Excel</button>
+    </div>
+</section>
+
+<section class="status refresh-note">
+    Atualizacao automatica a cada 15 segundos enquanto esta pagina estiver aberta.
+</section>
+
+<section class="dashboard-grid">
+    <article class="card dashboard-card total-card">
+        <span>Total de importacoes</span>
+        <strong id="totalImportacoes">0</strong>
+        <small>Arquivos processados no periodo filtrado.</small>
+    </article>
+    <article class="card dashboard-card success-card">
+        <span>Percentual de sucesso</span>
+        <strong id="percentualSucesso">0.0%</strong>
+        <small id="totalSucessoLabel">0 importacoes concluidas com sucesso.</small>
+    </article>
+    <article class="card dashboard-card error-card">
+        <span>Percentual de falha</span>
+        <strong id="percentualFalha">0.0%</strong>
+        <small id="totalFalhaLabel">0 importacoes com falha.</small>
+    </article>
+    <article class="card dashboard-chart-card">
+        <div class="chart-copy">
+            <span>Distribuicao</span>
+            <strong>Sucesso x Falha</strong>
+        </div>
+        <svg class="donut-chart" viewBox="0 0 42 42" aria-label="Grafico de sucesso e falha">
+            <circle class="donut-track" cx="21" cy="21" r="15.915"></circle>
+            <circle id="donut-success" class="donut-segment donut-success" cx="21" cy="21" r="15.915" stroke-dasharray="0 100" stroke-dashoffset="25"></circle>
+            <circle id="donut-failure" class="donut-segment donut-failure" cx="21" cy="21" r="15.915" stroke-dasharray="0 100" stroke-dashoffset="25"></circle>
+            <text id="donut-total" x="21" y="20.5" class="donut-center-value">0</text>
+            <text x="21" y="25.5" class="donut-center-label">total</text>
+        </svg>
+        <div class="chart-legend">
+            <span><i class="legend-dot legend-success"></i>Sucesso</span>
+            <span><i class="legend-dot legend-failure"></i>Falha</span>
+        </div>
+    </article>
+</section>
+
+<section class="summary">
+    <article class="card success">
+        <span>Sucesso</span>
+        <strong id="resumoSucesso">0</strong>
+    </article>
+    <article class="card error">
+        <span>Falha</span>
+        <strong id="resumoFalha">0</strong>
+    </article>
+    <article class="card neutral">
+        <span>Total</span>
+        <strong id="resumoTotal">0</strong>
+    </article>
+</section>
+
+<section id="followup-error" class="alert hidden"></section>
+<p id="followup-status" class="status">Carregando historico...</p>
+
+<section class="table-wrap">
+    <table>
+        <thead>
+            <tr>
+                <th>Data</th>
+                <th>Arquivo</th>
+                <th>Origem</th>
+                <th>Status</th>
+                <th>Registros</th>
+                <th>Mensagem</th>
+            </tr>
+        </thead>
+        <tbody id="followup-body"></tbody>
+    </table>
+</section>
+{% endblock %}
+{% block scripts %}
+<script src="/static/followup.js"></script>
+{% endblock %}

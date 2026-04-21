@@ -1,0 +1,103 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run UtilitiesPdf Python",
+      "type": "shell",
+      "command": "C:\\dev\\UtilitiesPdf\\python-app\\.venv313\\Scripts\\python.exe",
+      "args": [
+        "-m",
+        "uvicorn",
+        "app.main:app",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8002",
+        "--reload"
+      ],
+      "options": {
+        "cwd": "C:\\dev\\UtilitiesPdf\\python-app"
+      },
+      "isBackground": true,
+      "problemMatcher": [
+        {
+          "pattern": [
+            {
+              "regexp": "."
+            }
+          ],
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": ".*Started reloader process.*|.*Started server process.*",
+            "endsPattern": ".*Application startup complete.*"
+          }
+        }
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": false
+      }
+    },
+    {
+      "label": "Run UtilitiesPdf Python (debugpy attach)",
+      "type": "shell",
+      "command": "C:\\dev\\UtilitiesPdf\\python-app\\.venv313\\Scripts\\python.exe",
+      "args": [
+        "-m",
+        "debugpy",
+        "--listen",
+        "5678",
+        "-m",
+        "uvicorn",
+        "app.main:app",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8002",
+        "--reload"
+      ],
+      "options": {
+        "cwd": "C:\\dev\\UtilitiesPdf\\python-app"
+      },
+      "isBackground": true,
+      "problemMatcher": [
+        {
+          "pattern": [
+            {
+              "regexp": "."
+            }
+          ],
+          "background": {
+            "activeOnStart": true,
+            "beginsPattern": ".*",
+            "endsPattern": ".*Application startup complete.*"
+          }
+        }
+      ],
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": false
+      }
+    },
+    {
+      "label": "Compile UtilitiesPdf Python",
+      "type": "shell",
+      "command": "C:\\dev\\UtilitiesPdf\\python-app\\.venv313\\Scripts\\python.exe",
+      "args": [
+        "-m",
+        "compileall",
+        "app"
+      ],
+      "options": {
+        "cwd": "C:\\dev\\UtilitiesPdf\\python-app"
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "shared",
+        "clear": true
+      }
+    }
+  ]
+}

@@ -1,24 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\PortoBank\\dev\\UtilitiesPdf\\UtilitiesPdf.FollowUp\\UtilitiesPdf.FollowUp.csproj": {}
+    "C:\\dev\\UtilitiesPdf\\UtilitiesPdf.FollowUp\\UtilitiesPdf.FollowUp.csproj": {}
   },
   "projects": {
-    "D:\\PortoBank\\dev\\UtilitiesPdf\\UtilitiesPdf.FollowUp\\UtilitiesPdf.FollowUp.csproj": {
+    "C:\\dev\\UtilitiesPdf\\UtilitiesPdf.FollowUp\\UtilitiesPdf.FollowUp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\PortoBank\\dev\\UtilitiesPdf\\UtilitiesPdf.FollowUp\\UtilitiesPdf.FollowUp.csproj",
+        "projectUniqueName": "C:\\dev\\UtilitiesPdf\\UtilitiesPdf.FollowUp\\UtilitiesPdf.FollowUp.csproj",
         "projectName": "UtilitiesPdf.FollowUp",
-        "projectPath": "D:\\PortoBank\\dev\\UtilitiesPdf\\UtilitiesPdf.FollowUp\\UtilitiesPdf.FollowUp.csproj",
-        "packagesPath": "C:\\Users\\popne\\.nuget\\packages\\",
-        "outputPath": "D:\\PortoBank\\dev\\UtilitiesPdf\\UtilitiesPdf.FollowUp\\obj\\",
+        "projectPath": "C:\\dev\\UtilitiesPdf\\UtilitiesPdf.FollowUp\\UtilitiesPdf.FollowUp.csproj",
+        "packagesPath": "C:\\Users\\DenisLima\\.nuget\\packages\\",
+        "outputPath": "C:\\dev\\UtilitiesPdf\\UtilitiesPdf.FollowUp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "D:\\PortoBank\\dev\\UtilitiesPdf\\NuGet.Config",
-          "C:\\Users\\popne\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\dev\\UtilitiesPdf\\NuGet.Config",
+          "C:\\Users\\DenisLima\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -31,6 +31,7 @@
         },
         "frameworks": {
           "net10.0": {
+            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {}
           }
@@ -45,10 +46,11 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.100"
+        "SdkAnalysisLevel": "10.0.200"
       },
       "frameworks": {
         "net10.0": {
+          "framework": "net10.0",
           "targetAlias": "net10.0",
           "dependencies": {
             "ClosedXML": {
@@ -58,7 +60,7 @@
             "Microsoft.AspNetCore.App.Internal.Assets": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[10.0.3, )",
+              "version": "[10.0.6, )",
               "autoReferenced": true
             }
           },
@@ -81,7 +83,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.202/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",

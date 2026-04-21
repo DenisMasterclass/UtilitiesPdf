@@ -1,0 +1,2 @@
+INFO:     127.0.0.1:65049 - "GET /follow-up HTTP/1.1" 200 OK
+INFO:     127.0.0.1:65050 - "GET /api/importacoes/historico HTTP/1.1" 200 OK

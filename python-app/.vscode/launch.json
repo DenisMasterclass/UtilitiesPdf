@@ -1,0 +1,36 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug UtilitiesPdf Python",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": [
+        "app.main:app",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8002",
+        "--reload"
+      ],
+      "cwd": "C:\\dev\\UtilitiesPdf\\python-app",
+      "python": "C:\\dev\\UtilitiesPdf\\python-app\\.venv313\\Scripts\\python.exe",
+      "envFile": "C:\\dev\\UtilitiesPdf\\python-app\\.env",
+      "jinja": true,
+      "justMyCode": false,
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Attach UtilitiesPdf Python",
+      "type": "debugpy",
+      "request": "attach",
+      "connect": {
+        "host": "127.0.0.1",
+        "port": 5678
+      },
+      "cwd": "C:\\dev\\UtilitiesPdf\\python-app",
+      "justMyCode": false
+    }
+  ]
+}

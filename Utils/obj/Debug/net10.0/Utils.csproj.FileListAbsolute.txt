@@ -54,3 +54,16 @@ D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-startup-resilience\Utils.pd
 D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-enum-label\Utils.deps.json
 D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-enum-label\Utils.dll
 D:\PortoBank\dev\UtilitiesPdf\artifacts\api-validate-enum-label\Utils.pdb
+C:\dev\UtilitiesPdf\Utils\bin\Debug\net10.0\Utils.deps.json
+C:\dev\UtilitiesPdf\Utils\bin\Debug\net10.0\Utils.dll
+C:\dev\UtilitiesPdf\Utils\bin\Debug\net10.0\Utils.pdb
+C:\dev\UtilitiesPdf\Utils\obj\Debug\net10.0\Utils.csproj.AssemblyReference.cache
+C:\dev\UtilitiesPdf\Utils\obj\Debug\net10.0\Utils.GeneratedMSBuildEditorConfig.editorconfig
+C:\dev\UtilitiesPdf\Utils\obj\Debug\net10.0\Utils.AssemblyInfoInputs.cache
+C:\dev\UtilitiesPdf\Utils\obj\Debug\net10.0\Utils.AssemblyInfo.cs
+C:\dev\UtilitiesPdf\Utils\obj\Debug\net10.0\Utils.csproj.CoreCompileInputs.cache
+C:\dev\UtilitiesPdf\Utils\obj\Debug\net10.0\Utils.sourcelink.json
+C:\dev\UtilitiesPdf\Utils\obj\Debug\net10.0\Utils.dll
+C:\dev\UtilitiesPdf\Utils\obj\Debug\net10.0\refint\Utils.dll
+C:\dev\UtilitiesPdf\Utils\obj\Debug\net10.0\Utils.pdb
+C:\dev\UtilitiesPdf\Utils\obj\Debug\net10.0\ref\Utils.dll

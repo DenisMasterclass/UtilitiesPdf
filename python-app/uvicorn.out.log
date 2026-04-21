@@ -1,0 +1,9 @@
+INFO:     127.0.0.1:60229 - "GET /api/importacoes/historico HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60233 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52082 - "POST /api/propostas/importar-pasta?tipoPt=1 HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52083 - "GET /api/importacoes/exportar HTTP/1.1" 200 OK
+INFO:     127.0.0.1:52084 - "GET /follow-up HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61343 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:61343 - "GET /static/app.css HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60516 - "GET /importacoes HTTP/1.1" 200 OK
+INFO:     127.0.0.1:60516 - "GET /static/importacoes.js HTTP/1.1" 200 OK
