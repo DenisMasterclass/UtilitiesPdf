@@ -35,13 +35,11 @@ namespace Utils.Repositories.Entities
         public string TelefoneAlocado { get; set; } = string.Empty;
         public string TecnologiaAlocado { get; set; } = string.Empty;
         public string PerfilAlocado { get; set; } = string.Empty;
+        public string NivelAlocado { get; set; } = string.Empty;
         public decimal CustoHora { get; set; } = 0;
         public DateOnly DataIni { get; set; } = DateOnly.FromDateTime(DateTime.Now);
         public string PeriodoAlocacao { get; set; } = string.Empty;
         public StringBuilder Atividades { get; set; } = new();
-
-
-
 
     }
 }

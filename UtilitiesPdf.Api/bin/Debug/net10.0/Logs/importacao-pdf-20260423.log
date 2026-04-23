@@ -1,0 +1,26 @@
+DataUtc: 2026-04-23T17:29:21.1707867Z
+Arquivo: Template_PropostaTecnica_SobDemanda_ALOCACAO_V02C01.docx (2).pdf
+Erro: Invalid pattern 'Nome:([\s\S]*?)(' at offset 16. Not enough )'s.
+System.Text.RegularExpressions.RegexParseException: Invalid pattern 'Nome:([\s\S]*?)(' at offset 16. Not enough )'s.
+   at System.Text.RegularExpressions.RegexParser.ScanRegex()
+   at System.Text.RegularExpressions.RegexParser.Parse(String pattern, RegexOptions options, CultureInfo culture)
+   at System.Text.RegularExpressions.Regex..ctor(String pattern, RegexOptions options, TimeSpan matchTimeout, CultureInfo culture)
+   at System.Text.RegularExpressions.RegexCache.GetOrAdd(String pattern, RegexOptions options, TimeSpan matchTimeout)
+   at System.Text.RegularExpressions.Regex.Match(String input, String pattern, RegexOptions options)
+   at Utils.Repositories.Repository.ExtrairBloco(String texto, String marcadorInicio, String marcadorFim) in C:\dev\UtilitiesPdf\Utils\Repositories\Repository.cs:line 49
+   at Utils.Repositories.Repository.CamposPropostas(StringBuilder sb, TipoPt tipoPt) in C:\dev\UtilitiesPdf\Utils\Repositories\Repository.cs:line 167
+   at UtilitiesPdf.Api.Services.PdfImportService.ProcessarArquivoDoDiscoAsync(String caminhoArquivo, String nomeArquivo, String origem, TipoPt tipoPt, CancellationToken cancellationToken) in C:\dev\UtilitiesPdf\UtilitiesPdf.Api\Services\PdfImportService.cs:line 127
+--------------------------------------------------------------------------------
+DataUtc: 2026-04-23T17:30:37.7520441Z
+Arquivo: Template_PropostaTecnica_SobDemanda_ALOCACAO_V02C01.docx (2).pdf
+Erro: Invalid pattern 'Nome([\s\S]*?)(' at offset 15. Not enough )'s.
+System.Text.RegularExpressions.RegexParseException: Invalid pattern 'Nome([\s\S]*?)(' at offset 15. Not enough )'s.
+   at System.Text.RegularExpressions.RegexParser.ScanRegex()
+   at System.Text.RegularExpressions.RegexParser.Parse(String pattern, RegexOptions options, CultureInfo culture)
+   at System.Text.RegularExpressions.Regex..ctor(String pattern, RegexOptions options, TimeSpan matchTimeout, CultureInfo culture)
+   at System.Text.RegularExpressions.RegexCache.GetOrAdd(String pattern, RegexOptions options, TimeSpan matchTimeout)
+   at System.Text.RegularExpressions.Regex.Match(String input, String pattern, RegexOptions options)
+   at Utils.Repositories.Repository.ExtrairBloco(String texto, String marcadorInicio, String marcadorFim)
+   at Utils.Repositories.Repository.CamposPropostas(StringBuilder sb, TipoPt tipoPt)
+   at UtilitiesPdf.Api.Services.PdfImportService.ProcessarArquivoDoDiscoAsync(String caminhoArquivo, String nomeArquivo, String origem, TipoPt tipoPt, CancellationToken cancellationToken) in C:\dev\UtilitiesPdf\UtilitiesPdf.Api\Services\PdfImportService.cs:line 127
+--------------------------------------------------------------------------------
